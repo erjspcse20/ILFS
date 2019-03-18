@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 17, 2019 at 09:25 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 5.6.38
+-- Host: 127.0.0.1
+-- Generation Time: Mar 18, 2019 at 07:25 AM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 5.6.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,7 +43,7 @@ CREATE TABLE `hsn` (
 --
 
 INSERT INTO `hsn` (`uuid`, `ainc`, `name`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-('7f79f564-48f1-11e9-a446-14c2130d0834', 1, 'jaihsn', '2019-03-18 01:46:07', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-18 01:49:12', '8605c690-2d55-11e9-8642-14c2130d0834');
+('7f79f564-48f1-11e9-a446-14c2130d0834', 1, 'jaihsn', '2019-03-18 01:46:07', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-18 09:59:10', '8605c690-2d55-11e9-8642-14c2130d0834');
 
 -- --------------------------------------------------------
 
@@ -54,9 +54,9 @@ INSERT INTO `hsn` (`uuid`, `ainc`, `name`, `created_at`, `created_by`, `updated_
 CREATE TABLE `item` (
   `uuid` varchar(50) NOT NULL,
   `a_inc` int(11) NOT NULL,
-  `name` varchar(200) DEFAULT NULL,
-  `mobile` varchar(20) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
+  `party_id` varchar(50) DEFAULT NULL,
+  `product_id` varchar(50) DEFAULT NULL,
+  `hsn_id` varchar(50) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `created_by` varchar(50) DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -93,8 +93,9 @@ CREATE TABLE `mst_user` (
 --
 
 INSERT INTO `mst_user` (`uuid`, `aInc`, `f_name`, `l_name`, `full_name`, `user_name`, `password`, `mobile`, `email`, `created_by`, `created_at`, `updated_by`, `updated_at`, `ps_un`, `narration`, `type`) VALUES
+('03aa6d7f-493c-11e9-aa7a-705a0f3cbc10', 6, '', '', '     ', '', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '', '', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-18 10:39:31', 0, '0000-00-00 00:00:00', '', 'http://localhost:8089/il-fs/', 1),
 ('60edea8c-48de-11e9-a446-14c2130d0834', 2, 'jai', 'pandey', 'jai pandey', 'jai', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '9479275716', 'jaishankarpandey329@gmail.com', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-17 23:29:15', 8605, '2019-03-18 00:47:18', '1234', 'http://localhost/il-fs/', 1),
-('8605c690-2d55-11e9-8642-14c2130d0834', 1, 'Administrator', '', 'Administrator', 'admin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '9479275716', 'jaishankarpandey329@gmail.com', '', '0000-00-00 00:00:00', 8605, '2019-02-18 14:52:50', '1234', 'http://localhost/il-fs/', 0);
+('8605c690-2d55-11e9-8642-14c2130d0834', 1, 'Administrator', '', 'Administrator', 'admin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '9479275716', 'jaishankarpandey329@gmail.com', '', '0000-00-00 00:00:00', 8605, '2019-02-18 14:52:50', '1234', 'http://localhost:8089/il-fs/', 0);
 
 -- --------------------------------------------------------
 
@@ -129,6 +130,7 @@ INSERT INTO `party` (`uuid`, `ainc`, `name`, `mobile`, `email`, `created_at`, `c
 
 CREATE TABLE `product` (
   `uuid` varchar(50) NOT NULL,
+  `hsn_id` varchar(50) NOT NULL,
   `a_inc` int(11) NOT NULL,
   `name` varchar(200) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -136,6 +138,13 @@ CREATE TABLE `product` (
   `updated_at` datetime DEFAULT NULL,
   `updated_by` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`uuid`, `hsn_id`, `a_inc`, `name`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
+('729c3445-493c-11e9-aa7a-705a0f3cbc10', '7f79f564-48f1-11e9-a446-14c2130d0834', 1, 'sgde', '2019-03-18 10:42:38', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-18 11:53:02', '8605c690-2d55-11e9-8642-14c2130d0834');
 
 --
 -- Indexes for dumped tables
@@ -196,7 +205,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `mst_user`
 --
 ALTER TABLE `mst_user`
-  MODIFY `aInc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `aInc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `party`
@@ -208,7 +217,7 @@ ALTER TABLE `party`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `a_inc` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `a_inc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
