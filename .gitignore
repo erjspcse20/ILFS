@@ -1,0 +1,17 @@
+.project
+.classpath
+bin
+target
+.settings
+upload/
+upload/tiket/
+*.iml
+*.DS_Store
+.idea
+deploy.sh
+.vscode
+*.log
+.DS_Store
+.idea/workspace.xml
+workspace.xml
+flight_skipper_main/logs
