@@ -20,6 +20,7 @@
         </p>
 
         <div class="col-md-12 col-xs-12">
+            <form action="<?=base_url('welcome-to-ilfs-gentate-bill.jsp')?>" method="post" >
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Item List<small></small></h2>
@@ -34,11 +35,12 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
+                    <button type="submit" name="genratebill" id="genratebill" class="btn btn-primary">Genrate Bill</button>
                     <table id="statedata" style="width:100%" class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>S.No.</th>
-                            <th>Edit </th>
+                            <th><input class="checked_all" type="checkbox"> </th>
                             <th>Invoice No</th>
                             <th>Party Name & Address</th>
                             <th>Created Date</th>
@@ -70,7 +72,7 @@
                             ?>
                             <tr>
                                 <td><?=($i+1);?></td>
-                                <td><a href="<?=base_url('welcome-to-ilfs-edit-item.jsp/'.$ItemData[$i]["uuid"])?>" style="font-size:20px;" name="ed"><i class="fa fa-pencil-square-o fa-fw"></i></i></a></td>
+                                <td><input type="checkbox" name="itemid[]" class="checkbox" value="<?=$ItemData[$i]["uuid"]?>"></td>
                                 <td><?=$ItemData[$i]["item_published_id"];?></td>
                                 <td><?=$ItemData[$i]["PartyName"]." ".$ItemData[$i]["PartyAddress"];?></td>
                                 <td><?=date("d-M-Y",strtotime($ItemData[$i]["created_at"]));?></td>
@@ -103,9 +105,21 @@
                     </table>
                 </div>
             </div>
+            </form>
         </div>
     </div>
     <script>
+        $('.checked_all').on('change', function() {
+            $('.checkbox').prop('checked', $(this).prop("checked"));
+        });
+        //deselect "checked all", if one of the listed checkbox product is unchecked amd select "checked all" if all of the listed checkbox product is checked
+        $('.checkbox').change(function(){ //".checkbox" change
+            if($('.checkbox:checked').length == $('.checkbox').length){
+                $('.checked_all').prop('checked',true);
+            }else{
+                $('.checked_all').prop('checked',false);
+            }
+        });
         $("#statedata").DataTable({
             dom: "<'row'<'col-sm-3'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
             "lengthMenu": [[30, 60, 100, -1], [30, 60, 100, "All"]],

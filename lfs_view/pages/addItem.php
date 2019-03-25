@@ -4,9 +4,8 @@ $Partyid=isset($UserData["uuid"])?$UserData["uuid"]:"";
 $Hsnid=isset($UserData["uuid"])?$UserData["uuid"]:"";
 $Typeid=isset($UserData["uuid"])?$UserData["uuid"]:"";
 $Category=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$Igst=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$Cgst=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$Sgst=isset($UserData["uuid"])?$UserData["uuid"]:"";
+$GstType=isset($UserData["uuid"])?$UserData["uuid"]:"";
+$Gst=isset($UserData["uuid"])?$UserData["uuid"]:"";
 $PaymentMode=isset($UserData["uuid"])?$UserData["uuid"]:"";
 $FirstName=isset($UserData["f_name"])?$UserData["f_name"]:"";
 $LastName=isset($UserData["l_name"])?$UserData["l_name"]:"";
@@ -58,7 +57,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
 
                     <br />
 
-                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                    <form  id="addItem" method="post" name="addItem" action="<?=base_url('welcome-to-ilfs-add-item.jsp')?>" class="form-horizontal form-label-left">
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="col-md-6">
@@ -187,29 +186,32 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="col-md-6">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">SGST<span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="GstType">GST Type<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select class="form-control" id="Sgst" name="Sgst" class="selectdropdown">
-                                            <option value="" <?=($Sgst=="")?"selected='selected'":""?>>SELECT SGST</option>
+                                        <select class="form-control" id="GstType" name="GstType" class="selectdropdown">
+                                            <option value="" <?=($GstType=="")?"selected='selected'":""?>>SELECT GST Type</option>
+                                            <option value="1" <?=($GstType==1)?"selected='selected'":""?>>IGST</option>
+                                            <option value="2" <?=($GstType==2)?"selected='selected'":""?>>SGST & CGST</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">GST<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <select class="form-control" id="Gst" name="Gst" class="selectdropdown">
+                                            <option value="" <?=($Gst=="")?"selected='selected'":""?>>SELECT Total GST</option>
                                             <?php
                                             for($i=0;$i<=28;$i++) {
                                                 ?>
-                                                <option value="<?=$i?>" <?=($i == $Sgst) ? "selected='selected'" : "" ?>>
+                                                <option value="<?=$i?>" <?=($i == $Gst) ? "selected='selected'" : "" ?>>
                                                     <?=$i?>
                                                 </option>
                                                 <?php
                                             }
                                             ?>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">CGST <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="CgstShow" disabled="disabled" name="CgstShow" value="<?=$Cgst?>" class="form-control col-md-7 col-xs-12">
-                                        <input type="hidden" id="Cgst" disabled="disabled" name="Cgst" value="<?=$Cgst?>" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -218,31 +220,19 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="col-md-6">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">IGST <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Dimension">Total Tax<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select class="form-control" id="Igst" name="Igst" class="selectdropdown">
-                                            <option value="" <?=($Igst=="")?"selected='selected'":""?>>SELECT IGST</option>
-                                            <?php
-                                            for($i=0;$i<=28;$i++) {
-                                                ?>
-                                                <option value="<?=$i?>" <?=($i == $Igst) ? "selected='selected'" : "" ?>>
-                                                    <?=$i?>
-                                                </option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
+                                        <input type="text" id="TaxCalculatedShow" disabled name="TaxCalculatedShow" placeholder="TaxCalculated" class="form-control col-md-7 col-xs-12">
+                                        <input type="hidden" id="TaxCalculated" name="TaxCalculated" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="AmountWithTax">Amount with tax <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="VehicleNo">Ammount With Tax<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" disabled="disabled" id="AmountWithTaxShow" name="AmountWithTaxShow" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="AmountWithTaxShow" disabled name="AmountWithTaxShow" class="form-control col-md-7 col-xs-12">
                                         <input type="hidden" id="AmountWithTax" name="AmountWithTax" class="form-control col-md-7 col-xs-12">
-                                        <input type="hidden" id="SgstCalculated" name="SgstCalculated" class="form-control col-md-7 col-xs-12">
-                                        <input type="hidden" id="IgstCalculated" name="IgstCalculated" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -277,7 +267,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">PartyGSTNumber<span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="PartyGSTNumber">PartyGSTNumber<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="PartyGSTNumber" name="PartyGSTNumber" class="form-control col-md-7 col-xs-12">
@@ -310,17 +300,18 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="col-md-6">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ReceivedAmount">ReceivedAmount<span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ReceivedAmount">ReceivedAmount
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="ReceivedAmount" name="ReceivedAmount" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="ReceivedAmount" name="ReceivedAmount" class="form-control numpoint col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Rest Amount
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="RestAmount" name="RestAmount" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="RestAmountShow" disabled name="RestAmountShow" class="form-control numpoint col-md-7 col-xs-12">\
+                                        <input type="hidden" id="RestAmount" name="RestAmount" class="form-control numpoint col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -512,34 +503,76 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
             return false;
         }
     });
-    $("#Quantity").onkeyup(function () {
-        let qty=$("#Quantity").val();
-        let rate=$("#Rate").val();
-        let calamt=rate*qty;
+    $("#ReceivedAmount").keyup(function () {
+        let totalamountwithtax=parseFloat($("#AmountWithTax").val());
+        let reciveamount=parseFloat($("#ReceivedAmount").val());
+        let calamtrest=isNaN((totalamountwithtax-reciveamount))?0:(totalamountwithtax-reciveamount);
+        $("#RestAmount").val(calamtrest);
+        $("#RestAmountShow").val(calamtrest);
+    });
+    $("#Quantity").keyup(function () {
+        let qty=parseFloat($("#Quantity").val());
+        let rate=parseFloat($("#Rate").val());
+        let calamt=isNaN(rate*qty)?0:(rate*qty);
         $("#CalculatedAmount").val(calamt);
         $("#Calculated").val(calamt);
+        let transport=isNaN(parseFloat($("#TransportCharge").val()))?0:parseFloat($("#TransportCharge").val());
+        let caltotamt=calamt+transport;
+        let gst=parseFloat($("#Gst").val());
+        let gstcal=isNaN((caltotamt*gst/100))?0:(caltotamt*gst/100);
+        let amountwithtax=isNaN((caltotamt+gstcal))?0:(caltotamt+gstcal);
+        $("#AmountWithTax").val(amountwithtax);
+        $("#AmountWithTaxShow").val(amountwithtax);
+        $("#TaxCalculated").val(gstcal);
+        $("#TaxCalculatedShow").val(gstcal);
     });
-    $("#TransportCharge").onkeyup(function () {
-        let qty=$("#Quantity").val();
-        let rate=$("#Rate").val();
-        let transport=$("#TransportCharge").val();
-        let caltotamt=(rate*qty)+transport;
-        let sgst=$("#Sgst").val();
-        let igst=$("#Igst").val();
-        let amountwithtax=0;
-        if(sgst>0){
-            let sgstcal=(caltotamt*sgst/100);
-            amountwithtax=caltotamt+(2*sgstcal);
-            $("#AmountWithTax").val(amountwithtax);
-            $("#SgstCalculated").val(sgstcal);
-            $("#IgstCalculated").val("0");
-        }else if(igst>0){
-            let igstcal=(caltotamt*igst/100);
-            amountwithtax=caltotamt+igstcal;
-            $("#AmountWithTax").val(amountwithtax);
-            $("#SgstCalculated").val("0");
-            $("#IgstCalculated").val(igstcal);
-        }
+    $("#Rate").keyup(function () {
+        let qty=parseFloat($("#Quantity").val());
+        let rate=parseFloat($("#Rate").val());
+        let calamt=isNaN(rate*qty)?0:(rate*qty);
+        $("#CalculatedAmount").val(calamt);
+        $("#Calculated").val(calamt);
+        let transport=isNaN(parseFloat($("#TransportCharge").val()))?0:parseFloat($("#TransportCharge").val());
+        let caltotamt=calamt+transport;
+        let gst=parseFloat($("#Gst").val());
+        let gstcal=isNaN((caltotamt*gst/100))?0:(caltotamt*gst/100);
+        let amountwithtax=isNaN((caltotamt+gstcal))?0:(caltotamt+gstcal);
+        $("#AmountWithTax").val(amountwithtax);
+        $("#AmountWithTaxShow").val(amountwithtax);
+        $("#TaxCalculated").val(gstcal);
+        $("#TaxCalculatedShow").val(gstcal);
+    });
+    $("#TransportCharge").keyup(function () {
+        let qty=parseFloat($("#Quantity").val());
+        let rate=parseFloat($("#Rate").val());
+        let calamt=isNaN(rate*qty)?0:(rate*qty);
+        $("#CalculatedAmount").val(calamt);
+        $("#Calculated").val(calamt);
+        let transport=isNaN(parseFloat($("#TransportCharge").val()))?0:parseFloat($("#TransportCharge").val());
+        let caltotamt=calamt+transport;
+        let gst=parseFloat($("#Gst").val());
+        let gstcal=isNaN((caltotamt*gst/100))?0:(caltotamt*gst/100);
+        let amountwithtax=isNaN((caltotamt+gstcal))?0:(caltotamt+gstcal);
+        $("#AmountWithTax").val(amountwithtax);
+        $("#AmountWithTaxShow").val(amountwithtax);
+        $("#TaxCalculated").val(gstcal);
+        $("#TaxCalculatedShow").val(gstcal);
+    });
+    $("#Gst").change(function () {
+        let qty=parseFloat($("#Quantity").val());
+        let rate=parseFloat($("#Rate").val());
+        let calamt=isNaN(rate*qty)?0:(rate*qty);
+        $("#CalculatedAmount").val(calamt);
+        $("#Calculated").val(calamt);
+        let transport=isNaN(parseFloat($("#TransportCharge").val()))?0:parseFloat($("#TransportCharge").val());
+        let caltotamt=calamt+transport;
+        let gst=parseFloat($("#Gst").val());
+        let gstcal=isNaN((caltotamt*gst/100))?0:(caltotamt*gst/100);
+        let amountwithtax=isNaN((caltotamt+gstcal))?0:(caltotamt+gstcal);
+        $("#AmountWithTax").val(amountwithtax);
+        $("#AmountWithTaxShow").val(amountwithtax);
+        $("#TaxCalculated").val(gstcal);
+        $("#TaxCalculatedShow").val(gstcal);
     });
 
 </script>

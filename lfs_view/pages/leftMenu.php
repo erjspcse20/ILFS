@@ -1,13 +1,15 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+            <a href="<?=base_url('welcome-to-ilfs-item-list.jsp')?>" class="site_title"><img style="    background: aliceblue;
+    width: 219px;
+    height: 41px;" src="<?=base_url('lfs_view/assets/img/logo.png')?>"></a>
         </div>
         <div class="clearfix"></div>
 
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?=base_url('lfs_view/')?>assets/img/awtar.png" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
@@ -50,6 +52,11 @@
                         <ul class="nav child_menu">
                             <li><a href="<?=base_url('add-ilfs-item.jsp')?>">Add Item</a></li>
                             <li><a href="<?=base_url('welcome-to-ilfs-item-list.jsp')?>">Item List</a></li>
+                        </ul>
+                    </li>
+                    <li><a><i class="fa fa-paw"></i> Bill <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="<?=base_url('ilfs-bill-list.jsp')?>">Genarate Bill</a></li>
                         </ul>
                     </li>
                 </ul>
