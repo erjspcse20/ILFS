@@ -13,3 +13,5 @@ ALTER TABLE `item` ADD `is_deleted` BOOLEAN NOT NULL AFTER `rest_amount`;
 ALTER TABLE `item` ADD `item_published_id` VARCHAR(100) NOT NULL AFTER `is_deleted`;
 
 ALTER TABLE `item` CHANGE `a_inc` `a_inc` BIGINT(11) NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE `party` ADD `gst_no` VARCHAR(20) NULL AFTER `address`;

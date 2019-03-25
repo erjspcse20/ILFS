@@ -15,7 +15,7 @@ class Bill extends MY_Controller {
         $ProductId = $this->input->post('product');
         $FromDt = $this->input->post('FromDt');
         $ToDt = $this->input->post('ToDt');
-        $qry="select i.*,p.name as PartyName,p.address as PartyAddress,h.name as HsnCode,pr.name as ProductName
+        $qry="select i.*,p.name as PartyName,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
                 from Item i
                  left join party p on p.uuid=i.party_id
                  left join product pr on pr.uuid=i.product_id

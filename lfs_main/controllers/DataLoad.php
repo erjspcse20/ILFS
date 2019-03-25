@@ -24,7 +24,7 @@ class DataLoad extends MY_Controller
     public function partyDetail()
     {
         $PartyId=$this->input->post('Party');
-        $qry = "select uuid,name,address,mobile,email from party where uuid='".$PartyId."';";
+        $qry = "select uuid,name,address,mobile,email,gst_no from party where uuid='".$PartyId."';";
         $partydata = $this->CommonModel->ExecuteDirectQry($qry,1);
         echo json_encode($partydata);
     }

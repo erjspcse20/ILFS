@@ -270,7 +270,8 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="PartyGSTNumber">PartyGSTNumber<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="PartyGSTNumber" name="PartyGSTNumber" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="PartyGSTNumberShow" disabled name="PartyGSTNumberShow" class="form-control col-md-7 col-xs-12">
+                                        <input type="hidden" id="PartyGSTNumber" name="PartyGSTNumber" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -428,11 +429,14 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
             dataType: 'html',
             data: qry,
             success: function (res) {
+                //console.log(res);
                 if (res) {
                     var json = $.parseJSON(res);
                             $("#partyaddress").val(json.address);
                             $("#partymobile").val(json.mobile);
                             $("#partyemail").val(json.email);
+                            $("#PartyGSTNumberShow").val(json.gst_no);
+                            $("#PartyGSTNumber").val(json.gst_no);
                 }
             }
         });

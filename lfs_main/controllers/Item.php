@@ -27,7 +27,6 @@ class Item extends MY_Controller {
         $Dimension = $this->input->post('Dimension');
         $VehicleNo = $this->input->post('VehicleNo');
         $GPNO = $this->input->post('GPNO');
-        $PartyGSTNumber = $this->input->post('PartyGSTNumber');
         $StateOfSupply = $this->input->post('StateOfSupply');
         $PaymentMode = $this->input->post('PaymentMode');
         $ReceivedAmount = ($this->input->post('ReceivedAmount')=="")?0:$this->input->post('ReceivedAmount');
@@ -40,7 +39,7 @@ class Item extends MY_Controller {
         $CgstCalc=0;
         $IgstCalc=0;
         if($GstType==1){
-            $igst=$Gst;
+            $Igst=$Gst;
             $IgstCalc=$TaxCalculated;
         }elseif ($GstType==2){
             $Sgst=$Gst/2;
@@ -59,8 +58,8 @@ class Item extends MY_Controller {
         }
         if($Quantity!="" && $Rate!="" && $CalculatedAmount!="" && $TransportCharge!="" && $TaxCalculated!="" && $GstType!="" && $AmountWithTax!="")
         {
-            $InsQry = "INSERT INTO `item`(`uuid`,`item_published_id`, `party_id`, `product_id`, `hsn_id`, `created_at`, `created_by`, `type`, `quantity`, `rate`, `calculated_amount`, `category`, `transport_charge`, `total_gst`, `sgst`, `cgst`, `igst`, `gst_type`, `total_igst_calculated`, `total_sgst_calculated`, `total_cgst_calculated`, `amount_with_tax`, `dimension`, `vahical_no`, `gp_no`, `party_gst_no`, `state_of_supply`, `mode_of_payment`, `recived_amount`, `rest_amount`)
-                    VALUES (uuid(),'" . $Sequence . "','" . $PartyId . "','" . $ProductId . "','" . $HsnId . "',NOW(),'" . $this->session->userdata('uuid') . "','" . $Type . "'," . $Quantity . "," . $Rate . "," . $CalculatedAmount . ",'" . $Category . "'," . $TransportCharge . "," . $TaxCalculated . "," . $Sgst . "," . $Cgst . "," . $Igst . "," . $GstType . "," . $IgstCalc . "," . $SgstCalc . "," . $CgstCalc . "," . $AmountWithTax . ",'" . $Dimension . "','" . $VehicleNo . "','" . $GPNO . "','" . $PartyGSTNumber . "','" . $StateOfSupply . "','" . $PaymentMode . "'," . $ReceivedAmount . "," . $RestAmount . ");";
+            $InsQry = "INSERT INTO `item`(`uuid`,`item_published_id`, `party_id`, `product_id`, `hsn_id`, `created_at`, `created_by`, `type`, `quantity`, `rate`, `calculated_amount`, `category`, `transport_charge`, `total_gst`, `sgst`, `cgst`, `igst`, `gst_type`, `total_igst_calculated`, `total_sgst_calculated`, `total_cgst_calculated`, `amount_with_tax`, `dimension`, `vahical_no`, `gp_no`, `state_of_supply`, `mode_of_payment`, `recived_amount`, `rest_amount`)
+                    VALUES (uuid(),'" . $Sequence . "','" . $PartyId . "','" . $ProductId . "','" . $HsnId . "',NOW(),'" . $this->session->userdata('uuid') . "','" . $Type . "'," . $Quantity . "," . $Rate . "," . $CalculatedAmount . ",'" . $Category . "'," . $TransportCharge . "," . $TaxCalculated . "," . $Sgst . "," . $Cgst . "," . $Igst . "," . $GstType . "," . $IgstCalc . "," . $SgstCalc . "," . $CgstCalc . "," . $AmountWithTax . ",'" . $Dimension . "','" . $VehicleNo . "','" . $GPNO . "','" . $StateOfSupply . "','" . $PaymentMode . "'," . $ReceivedAmount . "," . $RestAmount . ");";
             if($this->CommonModel->create($InsQry))
             {
                 $this->_flashMessage(1,"Save successfuly","error occure");//$ReceivedAmount$AmountWithTax$Quantity$Rate$CalculatedAmount$TransportCharge$RestAmount
@@ -70,7 +69,7 @@ class Item extends MY_Controller {
                 //echo "error occure";
                 $this->_flashMessage(0,"Save successfuly","error occure");
             }//echo $this->db->last_query();exit;
-            return redirect('welcome-to-ilfs-Item-list.jsp');
+            return redirect('welcome-to-ilfs-item-list.jsp');
         }else{
             $this->_flashMessage(0,"Save successfuly","Please Provide Medetory field");
             $data["pageName"]='addItem';
@@ -85,7 +84,7 @@ class Item extends MY_Controller {
         $ProductId = $this->input->post('product');
         $FromDt = $this->input->post('FromDt');
         $ToDt = $this->input->post('ToDt');
-        $Item="select i.*,p.name as PartyName,p.address as PartyAddress,h.name as HsnCode,pr.name as ProductName
+        $Item="select i.*,p.name as PartyName,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
                 from Item i
                  left join party p on p.uuid=i.party_id
                  left join product pr on pr.uuid=i.product_id

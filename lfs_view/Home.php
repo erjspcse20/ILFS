@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="<?=base_url('lfs_view/')?>assets/vendors/iCheck/skins/flat/green.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url('lfs_view/')?>assets/assets/vendors/bootstrap-daterangepicker/daterangepicker.css"/>
     <link rel="stylesheet" type="text/css" href="<?=base_url('lfs_view/')?>assets/build/css/custom.min.css"/>
+    <link rel="stylesheet" type="text/css" href="<?=base_url('lfs_view/')?>assets/build/css/mystyle.css"/>
 <style type="text/css">
     .required{
         color: red;
