@@ -2,6 +2,7 @@
 $Partyid=isset($UserData["uuid"])?$UserData["uuid"]:"";
 $Name=isset($UserData["name"])?$UserData["name"]:"";
 $Mobile=isset($UserData["mobile"])?$UserData["mobile"]:"";
+$Address=isset($UserData["address"])?$UserData["address"]:"";
 $Email=isset($UserData["email"])?$UserData["email"]:"";
 ?>
 <div class="right_col" role="main">
@@ -20,7 +21,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
         <div class="col-md-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Add Pary <small></small></h2>
+                    <h2>Add Party <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -49,11 +50,13 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                             <input type="text" class="form-control" id="Phone" value="<?=$Mobile?>" name="Phone" placeholder="Phone">
                             <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
                         </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <input type="text" class="form-control" id="Address" value="<?=$Address?>" name="Address" placeholder="Address">
+
+                        </div>
                         <div class="ln_solid"></div>
                         <div class="form-group">
-                            <div class="col-md-7 col-sm-7 col-xs-12 col-md-offset-5">
-                                <button type="submit" name="addUser" id="addUser"  class="btn btn-success"><?=($Partyid=="")?"Save":"Update"?></button>
-                            </div>
+                            <p align="center"><button name="addParty" id="addParty" type="submit" class="btn btn-success"><?=($Partyid=="")?"Save":"Update"?></button></p>
                         </div>
                     </form>
                 </div>

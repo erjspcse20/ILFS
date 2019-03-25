@@ -80,8 +80,8 @@ class Hsn extends MY_Controller {
             return redirect('welcome-to-ilfs-hsn-list.jsp');
         }else{
             $data["pageName"]='addHsn';
-            $data["ErrorMsg"]='All Field Are Mendetory';
-            $this->_flashMessage(0,"Save successfuly","UserName Must be unique");;
+           // $data["ErrorMsg"]='All Field Are Mendetory';
+            $this->_flashMessage(0,"Save successfuly","All Field Are Mendetory");;
             $this->load->view('Home',$data);
         }
     }

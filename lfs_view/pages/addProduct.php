@@ -11,6 +11,7 @@ $Name=isset($ProductData["name"])?$ProductData["name"]:"";
     <link href="<?=base_url('lfs_view/')?>assets/select2/select2.css" rel="stylesheet">
     <script src="<?=base_url('lfs_view/')?>assets/select2/select2.js"></script>
 </head>
+<body>
 <div class="right_col" role="main">
     <div class="row">
         <p align="center" style="color:#F00;">
@@ -68,6 +69,7 @@ $Name=isset($ProductData["name"])?$ProductData["name"]:"";
         </div>
     </div>
 </div>
+</body>
 <script>
 
     $("#addProduct").click(function()

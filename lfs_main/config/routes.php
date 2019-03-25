@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'Login';
-$route['ilfs-Data-Dropdown/(:any)'] = 'DropLoad/$1';
+$route['ilfs-Data-Dropdown/(:any)'] = 'DataLoad/$1';
 
 //public route
 $route['welcome-to-ilfs-dashboard.jsp'] = 'Dashboard';

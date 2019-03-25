@@ -10,6 +10,7 @@ class Item extends MY_Controller {
     }
     public function AddItem()
     {
+        print_r($_REQUEST);
         $HsnId = $this->input->post('hsn');
         $Name = $this->input->post('Name');
         if(!empty($HsnId) && !empty($Name)) {
