@@ -24,9 +24,9 @@ class Party extends MY_Controller {
             }
             else
             {
-                //echo "error occure";
                 $this->_flashMessage(0,"Save successfuly","error occure");;
-            }//echo $this->db->last_query();exit;
+            }
+            //echo $this->db->last_query();exit;
             return redirect('welcome-to-ilfs-party-list.jsp');
         }else{
             $data["pageName"]='addParty';

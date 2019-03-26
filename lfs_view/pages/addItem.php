@@ -1,16 +1,26 @@
 <?php
-$Itemid=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$Partyid=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$Hsnid=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$Typeid=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$Category=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$GstType=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$Gst=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$PaymentMode=isset($UserData["uuid"])?$UserData["uuid"]:"";
-$FirstName=isset($UserData["f_name"])?$UserData["f_name"]:"";
-$LastName=isset($UserData["l_name"])?$UserData["l_name"]:"";
-$Mobile=isset($UserData["mobile"])?$UserData["mobile"]:"";
-$Email=isset($UserData["email"])?$UserData["email"]:"";
+$Itemid=isset($ItemData["uuid"])?$ItemData["uuid"]:"";
+$Partyid=isset($ItemData["party_id"])?$ItemData["party_id"]:"";
+$Hsnid=isset($ItemData["hsn_id"])?$ItemData["hsn_id"]:"";
+$Productid=isset($ItemData["product_id"])?$ItemData["product_id"]:"";
+$Typeid=isset($ItemData["type"])?$ItemData["type"]:"";
+$Quantity=isset($ItemData["quantity"])?$ItemData["quantity"]:"";
+$Category=isset($ItemData["category"])?$ItemData["category"]:"";
+$GstType=isset($ItemData["gst_type"])?$ItemData["gst_type"]:"";
+$Rate=isset($ItemData["rate"])?$ItemData["rate"]:"";
+$CalculatedAmount=isset($ItemData["calculated_amount"])?$ItemData["calculated_amount"]:"";
+$Gst=isset($ItemData["gst_type"])?(($ItemData["gst_type"]==1)?$ItemData["igst"]:($ItemData["cgst"]+$ItemData["sgst"])):"";
+$TransportCharge=isset($ItemData["transport_charge"])?$ItemData["transport_charge"]:"";
+$PaymentMode=isset($ItemData["mode_of_payment"])?$ItemData["mode_of_payment"]:"";
+$RestAmmount=isset($ItemData["rest_amount"])?$ItemData["rest_amount"]:"";
+$RecivedAmmount=isset($ItemData["recived_amount"])?$ItemData["recived_amount"]:"";
+$StateOfSupply=isset($ItemData["state_of_supply"])?$ItemData["state_of_supply"]:"";
+$PartyGstNo=isset($ItemData["party_gst_no"])?$ItemData["party_gst_no"]:"";
+$GPNo=isset($ItemData["gp_no"])?$ItemData["gp_no"]:"";
+$VehicleNo=isset($ItemData["vahical_no"])?$ItemData["vahical_no"]:"";
+$Dimension=isset($ItemData["dimension"])?$ItemData["dimension"]:"";
+$TotalAmountWithTax=isset($ItemData["amount_with_tax"])?$ItemData["amount_with_tax"]:"";
+$TotalTax=isset($ItemData["total_gst"])?$ItemData["total_gst"]:"";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -27,6 +37,11 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
 </head>
 <body>
 <div class="right_col" role="main">
+    <?php
+   /* echo "<pre>";
+    print_r($ItemData);
+    echo "<pre>";*/
+    ?>
     <div class="row">
         <p align="center" style="color:#F00;">
             <?php if($msg=$this->session->flashdata('feedback')): ?>
@@ -40,6 +55,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
         </p>
 
         <div class="col-md-12 col-xs-12">
+
             <div class="x_panel">
                 <div class="x_title">
                     <h2>Add User <small></small></h2>
@@ -57,7 +73,8 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
 
                     <br />
 
-                    <form  id="addItem" method="post" name="addItem" action="<?=base_url('welcome-to-ilfs-add-item.jsp')?>" class="form-horizontal form-label-left">
+                    <form  id="addItem" method="post" name="addItem" action="<?=($Itemid=="")?base_url('welcome-to-ilfs-add-item.jsp'):base_url('welcome-to-ilfs-update-item.jsp')?>" class="form-horizontal form-label-left">
+                        <input type="hidden" name="itm" id="itm" value="<?=$Itemid?>"/>
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="col-md-6">
@@ -135,7 +152,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Quantity">Quantity <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="Quantity" name="Quantity" required="required" placeholder="Qty/M.T /CUM/SQM/TRIP/NUM" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="Quantity" name="Quantity" value="<?=$Quantity?>" required="required" placeholder="Qty/M.T /CUM/SQM/TRIP/NUM" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -146,15 +163,15 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Rate <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="Rate" name="Rate" required="required" placeholder="Rate" class="form-control numpoint col-md-7 col-xs-12">
+                                        <input type="text" id="Rate" name="Rate" value="<?=$Rate?>" required="required" placeholder="Rate" class="form-control numpoint col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">CalculatedAmount<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="Calculated" name="Calculated" disabled required="required" placeholder="Calculated Amount" class="form-control numpoint col-md-7 col-xs-12">
-                                        <input type="hidden" id="CalculatedAmount" name="CalculatedAmount" required="required" placeholder="Calculated Amount" class="form-control numpoint col-md-7 col-xs-12">
+                                        <input type="text" id="Calculated" name="Calculated" value="<?=$CalculatedAmount?>" disabled required="required" placeholder="Calculated Amount" class="form-control numpoint col-md-7 col-xs-12">
+                                        <input type="hidden" id="CalculatedAmount" name="CalculatedAmount" value="<?=$CalculatedAmount?>" required="required" placeholder="Calculated Amount" class="form-control numpoint col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -177,7 +194,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="TransportCharge">TransportCharge<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="TransportCharge" name="TransportCharge" required="required" placeholder="Transport Charge" class="form-control numpoint col-md-7 col-xs-12">
+                                        <input type="text" id="TransportCharge" name="TransportCharge" value="<?=$TransportCharge?>" required="required" placeholder="Transport Charge" class="form-control numpoint col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -223,16 +240,16 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Dimension">Total Tax<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="TaxCalculatedShow" disabled name="TaxCalculatedShow" placeholder="TaxCalculated" class="form-control col-md-7 col-xs-12">
-                                        <input type="hidden" id="TaxCalculated" name="TaxCalculated" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="TaxCalculatedShow" disabled name="TaxCalculatedShow" value="<?=$TotalTax?>" placeholder="TaxCalculated" class="form-control col-md-7 col-xs-12">
+                                        <input type="hidden" id="TaxCalculated" name="TaxCalculated" value="<?=$TotalTax?>" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="VehicleNo">Ammount With Tax<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="AmountWithTaxShow" disabled name="AmountWithTaxShow" class="form-control col-md-7 col-xs-12">
-                                        <input type="hidden" id="AmountWithTax" name="AmountWithTax" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="AmountWithTaxShow" value="<?=$TotalAmountWithTax?>" disabled name="AmountWithTaxShow" class="form-control col-md-7 col-xs-12">
+                                        <input type="hidden" id="AmountWithTax" value="<?=$TotalAmountWithTax?>" name="AmountWithTax" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -244,14 +261,14 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="Dimension">DIMENSION/DMC<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="Dimension" name="Dimension" placeholder="DIMENSION/DMC" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="Dimension" name="Dimension" value="<?=$Dimension?>" placeholder="DIMENSION/DMC" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="VehicleNo">vehicle no<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="VehicleNo" name="VehicleNo" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="VehicleNo" value="<?=$VehicleNo?>" name="VehicleNo" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -263,15 +280,15 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="GPNO">GP No. <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="GPNO" name="GPNO" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="GPNO" name="GPNO" value="<?=$GPNo?>" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="PartyGSTNumber">PartyGSTNumber<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="PartyGSTNumberShow" disabled name="PartyGSTNumberShow" class="form-control col-md-7 col-xs-12">
-                                        <input type="hidden" id="PartyGSTNumber" name="PartyGSTNumber" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="PartyGSTNumberShow" value="<?=$PartyGstNo?>" disabled name="PartyGSTNumberShow" class="form-control col-md-7 col-xs-12">
+                                        <input type="hidden" id="PartyGSTNumber" value="<?=$PartyGstNo?>" name="PartyGSTNumber" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -283,7 +300,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="StateOfSupply">State of Supply<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="StateOfSupply" name="StateOfSupply" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="StateOfSupply" value="<?=$StateOfSupply?>" name="StateOfSupply" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -304,15 +321,15 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ReceivedAmount">ReceivedAmount
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="ReceivedAmount" name="ReceivedAmount" class="form-control numpoint col-md-7 col-xs-12">
+                                        <input type="text" id="ReceivedAmount" value="<?=$RecivedAmmount?>" name="ReceivedAmount" class="form-control numpoint col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Rest Amount
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="RestAmountShow" disabled name="RestAmountShow" class="form-control numpoint col-md-7 col-xs-12">\
-                                        <input type="hidden" id="RestAmount" name="RestAmount" class="form-control numpoint col-md-7 col-xs-12">
+                                        <input type="text" id="RestAmountShow" value="<?=$RestAmmount?>" disabled name="RestAmountShow" class="form-control numpoint col-md-7 col-xs-12">\
+                                        <input type="hidden" id="RestAmount" value="<?=$RestAmmount?>" name="RestAmount" class="form-control numpoint col-md-7 col-xs-12">
                                     </div>
                                 </div>
                             </div>
@@ -321,7 +338,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
 
                         <div class="ln_solid"></div>
                         <div class="form-group">
-                            <p align="center"><button type="submit" name="addItem" id="addItem" class="btn btn-success">Submit</button></p>
+                            <p align="center"><button type="submit" name="addItem" id="addItem" class="btn btn-success"><?=(($Itemid=="")?"Save":"update")?></button></p>
                         </div>
                     </form>
                 </div>
@@ -331,6 +348,16 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
 </div>
 </body>
 <script>
+
+    let partyid="<?=$Partyid?>";
+    let hsnid="<?=$Hsnid?>";
+    if(partyid!=""){
+        partydetail(partyid);
+    }
+    if(hsnid!=""){
+        changeProduct(hsnid);
+    }
+
     let typedata='[{"uuid":"MT","name":"M.T"},{"uuid":"CUM","name":"CUM"},{"uuid":"SQM","name":"SQM"},{"uuid":"NUM","name":"NUM"},{"uuid":"TRIP","name":"TRIP"}]';
     let paymentmode='[{"uuid":"Cash","name":"Cash"},{"uuid":"CreditCard","name":"Credit Card"},{"uuid":"DebitCard","name":"Debit card"},{"uuid":"Paytm","name":"Paytm"},{"uuid":"Cheque","name":"Cheque"},{"uuid":"BhimUpi","name":"Bhim upi"},{"uuid":"PhonePay","name":"Phone Pay"},{"uuid":"Other","name":"Other"}]';
     $(document).ready(function() {
@@ -342,7 +369,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
 
             if(jsontype[j].uuid.toUpperCase()=="<?=$Typeid?>")
             {
-                $('#Type').append('<option value="'+json[j].jsontype+'" selected="selected">'+jsontype[j].name+'</option>');
+                $('#Type').append('<option value="'+jsontype[j].uuid+'" selected="selected">'+jsontype[j].name+'</option>');
 
             }else
             {
@@ -351,7 +378,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
         }
         $('#Type').select2();
         for(let k=0;k<jsonpayment.length;k++){
-            if(jsonpayment[k].uuid.toUpperCase()=="<?=$PaymentMode?>")
+            if(jsonpayment[k].uuid.toUpperCase()=="<?=strtoupper($PaymentMode)?>")
             {
                 $('#PaymentMode').append('<option value="'+jsonpayment[k].uuid+'" selected="selected">'+jsonpayment[k].name+'</option>');
 
@@ -376,7 +403,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                     $('#party').append('<option value="">Select Party</option>');
                     for (var i=0;i<json.length;++i)
                     {
-                        if(json[i].uuid.toUpperCase()=="<?=$Partyid?>")
+                        if(json[i].uuid.toUpperCase()==partyid.toUpperCase())
                         {
                             $('#party').append('<option value="'+json[i].uuid+'" selected="selected">'+json[i].name+'</option>');
 
@@ -405,7 +432,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                     $('#hsn').append('<option value="">Select Hsn</option>');
                     for (var i=0;i<json.length;++i)
                     {
-                        if(json[i].uuid.toUpperCase()=="<?=$Hsnid?>")
+                        if(json[i].uuid.toUpperCase()=="<?=strtoupper($Hsnid)?>")
                         {
                             $('#hsn').append('<option value="'+json[i].uuid+'" selected="selected">'+json[i].name+'</option>');
                         }
@@ -421,30 +448,36 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
         });
     });
     $("#party").change(function () {
-        let partyid=$("#party").val();
-        var qry = "Party="+partyid;
-        $.ajax({
-            type: "POST",
-            url: '<?php echo base_url()?>' + "ilfs-Data-Dropdown/partyDetail",
-            dataType: 'html',
-            data: qry,
-            success: function (res) {
-                //console.log(res);
-                if (res) {
-                    var json = $.parseJSON(res);
-                            $("#partyaddress").val(json.address);
-                            $("#partymobile").val(json.mobile);
-                            $("#partyemail").val(json.email);
-                            $("#PartyGSTNumberShow").val(json.gst_no);
-                            $("#PartyGSTNumber").val(json.gst_no);
-                }
-            }
-        });
+        partyid=$("#party").val();
+        partydetail(partyid);
     });
+    function partydetail(partyid){
+        if((partyid!="") && partyid!=undefined){
+            var qry = "Party="+partyid;
+            $.ajax({
+                type: "POST",
+                url: '<?php echo base_url()?>' + "ilfs-Data-Dropdown/partyDetail",
+                dataType: 'html',
+                data: qry,
+                success: function (res) {
+                    //console.log(res);
+                    if (res) {
+                        var json = $.parseJSON(res);
+                        $("#partyaddress").val(json.address);
+                        $("#partymobile").val(json.mobile);
+                        $("#partyemail").val(json.email);
+                        $("#PartyGSTNumberShow").val(json.gst_no);
+                        $("#PartyGSTNumber").val(json.gst_no);
+                    }
+                }
+            });
+        }
+    }
     $("#hsn").change(function () {
         let hsnid=$("#hsn").val();
         changeProduct(hsnid);
     });
+
     function  changeProduct(hsnid) {
         var qryproduct="hsn="+hsnid;
         $.ajax({
@@ -461,7 +494,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                     $('#product').append('<option value="">Select Product</option>');
                     for (var i=0;i<json.length;++i)
                     {
-                        if(json[i].uuid.toUpperCase()=="<?=$Hsnid?>")
+                        if(json[i].uuid.toUpperCase()=="<?=strtoupper($Productid)?>")
                         {
                             $('#product').append('<option value="'+json[i].uuid+'" selected="selected">'+json[i].name+'</option>');
                         }
@@ -577,6 +610,20 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
         $("#AmountWithTaxShow").val(amountwithtax);
         $("#TaxCalculated").val(gstcal);
         $("#TaxCalculatedShow").val(gstcal);
+    });
+    $("#addItem").click(function () {
+        if($("#hsn").val()==""){
+            alert("please Select Hsn Code");
+            return false;
+        }
+        if($("#party").val()==""){
+            alert("please Select party");
+            return false;
+        }
+        if($("#product").val()==""){
+            alert("please Select product");
+            return false;
+        }
     });
 
 </script>

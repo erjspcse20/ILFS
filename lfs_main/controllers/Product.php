@@ -17,17 +17,17 @@ class Product extends MY_Controller {
                     VALUES (uuid(),'" . $HsnId . "','" . $Name . "','" . $this->session->userdata('uuid') . "',NOW());";
             if($this->CommonModel->create($InsQry))
             {
-                $this->_flashMessage(1,"Save successfuly","error occure");;
+                $this->_flashMessage(1,"Save successfuly","error occure");
             }
             else
             {
                 //echo "error occure";
-                $this->_flashMessage(0,"Save successfuly","error occure");;
+                $this->_flashMessage(0,"Save successfuly","error occure");
             }//echo $this->db->last_query();exit;
             return redirect('welcome-to-ilfs-product-list.jsp');
         }else{
             $data["pageName"]='addProduct';
-            $this->_flashMessage(0,"Save successfuly","Hsn code and  Name is medetory");;
+            $this->_flashMessage(0,"Save successfuly","Hsn code and  Name is medetory");
             $this->load->view('Home',$data);
         }
     }
@@ -37,11 +37,11 @@ class Product extends MY_Controller {
                 from product p
                  left join hsn h on p.hsn_id=h.uuid
                  order by ainc desc;";
-        $agent=$this->CommonModel->ExecuteDirectQry($qry);
+        $Product=$this->CommonModel->ExecuteDirectQry($qry);
         /* echo "<pre>";
          print_r($agent);
          echo "<pre>";*/
-        $data["ProductData"]=$agent;
+        $data["ProductData"]=$Product;
         $data["pageName"]='productList';
         $this->load->view('Home',$data);
     }
@@ -75,17 +75,17 @@ class Product extends MY_Controller {
             $InsQry = "Update product set name='" . $Name . "',hsn_id='" . $HsnId . "',updated_at=now(),updated_by='" . $this->session->userdata('uuid') . "' where uuid='".$Productid."';";
             if($this->CommonModel->create($InsQry))
             {
-                $this->_flashMessage(1,"Updated successfuly","error occure");;
+                $this->_flashMessage(1,"Updated successfuly","error occure");
             }
             else
             {
                 //echo "error occure";
-                $this->_flashMessage(0,"Save successfuly","error occure");;
+                $this->_flashMessage(0,"Save successfuly","error occure");
             }//echo $this->db->last_query();exit;
             return redirect('welcome-to-ilfs-product-list.jsp');
         }else{
             $data["pageName"]='addProduct';
-            $this->_flashMessage(0,"Save successfuly","Hsn code and  Name is medetory");;
+            $this->_flashMessage(0,"Save successfuly","Hsn code and  Name is medetory");
             $this->load->view('Home',$data);
         }
     }

@@ -10,17 +10,15 @@
     <div class="row">
         <p align="center" style="color:#F00;">
             <?php if($msg=$this->session->flashdata('feedback')): ?>
-
                 <strong style="color:#F00">
                     <?=$msg?>
                 </strong>
-
             <?php endif; ?>
             <?=(isset($ErrorMsg)?$ErrorMsg:"");?>
         </p>
-
         <div class="col-md-12 col-xs-12">
             <div class="x_panel">
+
                 <div class="x_title">
                     <h2>User List<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
@@ -38,26 +36,22 @@
                         <thead>
                         <tr>
                             <th>S.No.</th>
-                            <th>Edit </th>
-                            <th>Name</th>
-                            <th>User Name</th>
-                            <th>Email</th>
-                            <th>Mobile No</th>
-                            <th>Type</th>
+                            <th>Download</th>
+                            <th>Invoice No </th>
+                            <th>Item Invoice No</th>
+                            <th>Crated At</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
-                        for($i=0;$i<count($UserData);$i++) {
+                        for($i=0;$i<count($InvoiceData);$i++) {
                             ?>
                             <tr>
                                 <td><?=($i+1);?></td>
-                                <td><a href="<?=base_url('welcome-to-ilfs-edit-user.jsp/'.$UserData[$i]["uuid"])?>" style="font-size:20px;" name="ed"><i class="fa fa-pencil-square-o fa-fw"></i></i></a></td>
-                                <td><?=$UserData[$i]["full_name"];?></td>
-                                <td><?=$UserData[$i]["user_name"];?></td>
-                                <td><?=$UserData[$i]["email"];?></td>
-                                <td><?=$UserData[$i]["mobile"];?></td>
-                                <td><?=($UserData[$i]["type"]==0)?"Administrator":"staff";?></td>
+                                <td><a target="_blank" href="<?=base_url('download/'.$InvoiceData[$i]["pdf_name"])?>" style="font-size:20px;"  name="pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
+                                <td><?=$InvoiceData[$i]["invoice_no"];?></td>
+                                <td><?=$InvoiceData[$i]["item_no"];?></td>
+                                <td><?=$InvoiceData[$i]["created_at"];?></td>
                             </tr>
                             <?php
                         }
@@ -66,12 +60,11 @@
 
                     </table>
                 </div>
+            </div>
         </div>
     </div>
-</div>
     <script>
         $("#datatable").DataTable({
-
             dom: "<'row'<'col-sm-3'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
             "lengthMenu": [[30, 60, 100, -1], [30, 60, 100, "All"]],
             buttons: [

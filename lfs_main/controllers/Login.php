@@ -7,13 +7,14 @@ class Login extends CI_Controller {
     }
     public function index()
     {
-        $this->load->view('login');
+        $data["pageName"]='loginpage';
+        $this->load->view('Login',$data);
     }
     public function loginstart(){
         $this->load->model('LoginModel');
         if($this->form_validation->run('signin-master-rules')== FALSE)
         {
-            $data["pageName"]='loginPage';
+            $data["pageName"]='loginpage';
             $this->load->view('Login',$data);
         }
         else
@@ -35,13 +36,13 @@ class Login extends CI_Controller {
                 else
                 {
                     $this->_flashMessage(0,'LoginFailed',"Please enter correct username and password");
-                    return redirect('welecome-to-ilfs-Login.jsp');
+                    return redirect('welecome-to-ilfs-login.jsp');
                 }
             }
             else
             {
                 $this->_flashMessage(0,'LoginFailed',"Please Enter UserName/Password");
-                return redirect('welecome-to-ilfs-Login.jsp');
+                return redirect('welecome-to-ilfs-login.jsp');
             }
         }
     }
@@ -49,7 +50,7 @@ class Login extends CI_Controller {
     {
 
         $this->session->sess_destroy();
-        return redirect('welecome-to-ilfs-Login.jsp');
+        return redirect('welecome-to-ilfs-login.jsp');
 
     }
     private function _flashMessage($successful, $successmsg, $failuremsg)

@@ -91,8 +91,13 @@ $route['welcome-to-ilfs-edit-item.jsp/(:any)'] = 'Item/EditItem/$1';
 $route['welcome-to-ilfs-item-list.jsp'] = 'Item/ItemList';
 $route['welcome-to-ilfs-update-item.jsp'] = 'Item/UpdateItem';
 
+$route['welcome-to-ilfs-invoice-list.jsp'] = 'Invoice/InvoiceList';
+
 $route['ilfs-bill-list.jsp'] = 'Bill/ItemList';
 $route['welcome-to-ilfs-gentate-bill.jsp'] = 'Bill/GenrateBill';
+
+
+$route['download/(:any)/(:any)/(:any)'] = "/Filecontroller/download/$1/$2/$3";
 
 
 

@@ -4,7 +4,10 @@ $FirstName=isset($UserData["f_name"])?$UserData["f_name"]:"";
 $LastName=isset($UserData["l_name"])?$UserData["l_name"]:"";
 $Mobile=isset($UserData["mobile"])?$UserData["mobile"]:"";
 $Email=isset($UserData["email"])?$UserData["email"]:"";
+$UserType=isset($UserData["type"])?$UserData["type"]:"";
 ?>
+<link href="<?=base_url('lfs_view/')?>assets/select2/select2.css" rel="stylesheet">
+<script src="<?=base_url('lfs_view/')?>assets/select2/select2.js"></script>
 <div class="right_col" role="main">
 <div class="row">
     <p align="center" style="color:#F00;">
@@ -54,6 +57,7 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                         <input type="text" class="form-control" id="Phone" value="<?=$Mobile?>" name="Phone" placeholder="Phone">
                         <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
                     </div>
+
                     <?php
                     if($Userid=="") {
                         ?>
@@ -75,6 +79,16 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
                         <?php
                     }
                     ?>
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        <label class="col-md-3 col-sm-3 col-xs-12" for="first-name">User Type</label>
+                        <div class="col-md-9">
+                            <select name="UserType" id="UserType" class="selectdropdown">
+                                <option value="1" <?=($UserType==1)?"selected='selected'":""?>>Staff</option>
+                                <option value="0" <?=($UserType==0)?"selected='selected'":""?>>Administrator</option>
+                            </select>
+                        </div>
+
+                    </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-7 col-sm-7 col-xs-12 col-md-offset-5">
@@ -108,4 +122,5 @@ $Email=isset($UserData["email"])?$UserData["email"]:"";
         }
 
     });
+    $('#UserType').select2();
 </script>

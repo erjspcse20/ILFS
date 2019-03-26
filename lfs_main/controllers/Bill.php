@@ -10,67 +10,76 @@ class Bill extends MY_Controller {
     }
     public function ItemList()
     {
+        $agent=array();
+        $FromDate = $this->input->post('fromdate');
+        $ToDate = $this->input->post('todate');
+        $data["ToDate"]=($ToDate!="")?$ToDate:date("d-m-Y");
+        $data["FromDate"]=($FromDate!="")?$FromDate:date("d-m-Y",strtotime('-10 days', strtotime(date("d-m-Y"))));
         $PartyId = $this->input->post('party');
-        $HsnId = $this->input->post('hsn');
-        $ProductId = $this->input->post('product');
-        $FromDt = $this->input->post('FromDt');
-        $ToDt = $this->input->post('ToDt');
-        $qry="select i.*,p.name as PartyName,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
+        if($PartyId!="")
+        {
+            $qry="select i.*,p.name as PartyName,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
                 from Item i
                  left join party p on p.uuid=i.party_id
                  left join product pr on pr.uuid=i.product_id
                  left join hsn h on h.uuid=i.hsn_id
-                 where i.is_deleted=false ".((!empty($PartyId))?" and i.party_id='".$PartyId."'":"")." ".((!empty($HsnId))?" and i.hsn_id='".$HsnId."'":"")." ".((!empty($ProductId))?" and i.product_id='".$ProductId."'":"")." 
+                 where i.is_deleted=0 and i.bill_status=2 ".((!empty($PartyId))?" and i.party_id='".$PartyId."'":"")." ".((!empty($FromDate))?" and i.created_at>='".date("Y-m-d H:i:s",strtotime($FromDate))."'":"")." ".((!empty($ToDate))?" and i.created_at<='".date("Y-m-d H:i:s",strtotime($ToDate."11:59:59"))."'":"")." 
                  order by i.a_inc desc;";
-        $agent=$this->CommonModel->ExecuteDirectQry($qry);
+            $agent=$this->CommonModel->ExecuteDirectQry($qry);
+        }
+
 
         $data["ItemData"]=$agent;
+        $data["PartyId"]=$PartyId;
         $data["pageName"]='billList';
         $this->load->view('Home',$data);
     }
+
     public function GenrateBill()
     {
-         echo "<pre>";
-         print_r($_REQUEST);
-         echo "<pre>";exit;
-        $html="";
+        $ItemRes=array();
+        $PartyRes=array();
+        $Partyid = $this->input->post('party');
+        $Itemid = $this->input->post('itemid');
+
+         $partyQry="select * from party where uuid='".$Partyid."'";
+         $PartyRes=$this->CommonModel->ExecuteDirectQry($partyQry,1);
+            $InvoiceNo="";
+        for($i=0;$i<count($Itemid);$i++){
+            $itemQry="select i.*,h.name as hsnCode,p.name as productName from item i
+                        left outer join hsn h on i.hsn_id=h.uuid
+                        left outer join product p on i.product_id=p.uuid
+                          where i.uuid='".$Itemid[$i]."'";
+            $ItemRes[$i]=$this->CommonModel->ExecuteDirectQry($itemQry,1);
+            $Qry[$i]="update item set bill_status=1 where uuid='".$Itemid[$i]."'";
+            $InvoiceNo .=$ItemRes[$i]["item_published_id"]."^";
+        }
+        $invoiceQry="select max(ainc) as maxno from invoice";
+        $InvRes=$this->CommonModel->ExecuteDirectQry($partyQry,1);
+        $prefix="DL/JHA/";
+         $html="";
         ini_set('memory_limit', '256M');
         $this->load->library('pdf');
         $pdf = $this->pdf->load();
         $data['title'] = "genrateBill";
-        $html .= $this->load->view('pages/bill', $data, true);
-        //$datarule["rule"] = $rule;
-        //$html .= $this->load->view('pages/rule', $datarule, true);
+        $data['InvoiceNo'] = $prefix.date("M")."/".date("Y")."/".(($InvRes["maxno"]="NULL")?"1":($InvRes["maxno"]+1));
+
+        $data['PartyData'] = $PartyRes;
+        $data['ItemData'] = $ItemRes;
+        $html .= $this->load->view('pages/printBill', $data, true);
         $pdf->WriteHTML($html);
         $output = 'upload/bill/' . date('Y_m_d_H_i_s') . '_.pdf';
-        $pdf->Output("$output", 'I');
+        $Qry[(count($Itemid))]="INSERT INTO `invoice`(`uuid`, `prefix`, `item_no`, `invoice_no`, `created_at`, `created_by`, `pdf_name`)
+                                  VALUES (uuid(),'" . $prefix . "','" .$InvoiceNo. "','" . $data['InvoiceNo'] . "',NOW(),'" . $this->session->userdata('uuid') . "','" . $output . "');";
+        //print_r($Qry);exit;
+        $this->CommonModel->createmultiquery($Qry);
+        $pdf->Output("$output", 'F');
+        $pdf->Output("$output", 'D');
 
+        return redirect('lfs-bill-list.jsp');
 
     }
-    public function UpdateItem()
-    {
-        $HsnId = $this->input->post('hsn');
-        $Name = $this->input->post('Name');
-        $Itemid = $this->input->post('Itemid');
-        if(!empty($HsnId) && !empty($Name) && !empty($Itemid))
-        {
-            $InsQry = "Update Item set name='" . $Name . "',hsn_id='" . $HsnId . "',updated_at=now(),updated_by='" . $this->session->userdata('uuid') . "' where uuid='".$Itemid."';";
-            if($this->CommonModel->create($InsQry))
-            {
-                $this->_flashMessage(1,"Updated successfuly","error occure");;
-            }
-            else
-            {
-                //echo "error occure";
-                $this->_flashMessage(0,"Save successfuly","error occure");;
-            }//echo $this->db->last_query();exit;
-            return redirect('welcome-to-ilfs-Item-list.jsp');
-        }else{
-            $data["pageName"]='addItem';
-            $this->_flashMessage(0,"Save successfuly","Hsn code and  Name is medetory");;
-            $this->load->view('Home',$data);
-        }
-    }
+
     private function _flashMessage($successful, $successmsg, $failuremsg)
     {
         if( $successful )

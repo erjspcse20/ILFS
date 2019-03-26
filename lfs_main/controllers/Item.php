@@ -10,7 +10,7 @@ class Item extends MY_Controller {
     }
     public function AddItem()
     {
-        print_r($_REQUEST);
+        //print_r($_REQUEST);
         $PartyId = $this->input->post('party');
         $HsnId = $this->input->post('hsn');
         $ProductId = $this->input->post('product');
@@ -45,7 +45,7 @@ class Item extends MY_Controller {
             $Sgst=$Gst/2;
             $Cgst=$Gst/2;
             $CgstCalc=$TaxCalculated/2;
-            $IgstCalc=$TaxCalculated/2;
+            $SgstCalc=$TaxCalculated/2;
         }
         $last_no_qry="select max(a_inc) as sequence from item";
         $vistor=$this->CommonModel->ExecuteDirectQry($last_no_qry,1);
@@ -68,8 +68,9 @@ class Item extends MY_Controller {
             {
                 //echo "error occure";
                 $this->_flashMessage(0,"Save successfuly","error occure");
-            }//echo $this->db->last_query();exit;
-            return redirect('welcome-to-ilfs-item-list.jsp');
+            }
+            //echo $this->db->last_query();exit;
+            return redirect('add-ilfs-item.jsp');
         }else{
             $this->_flashMessage(0,"Save successfuly","Please Provide Medetory field");
             $data["pageName"]='addItem';
@@ -79,37 +80,52 @@ class Item extends MY_Controller {
     }
     public function ItemList()
     {
+        $FromDate = $this->input->post('fromdate');
+        $ToDate = $this->input->post('todate');
+        $data["ToDate"]=($ToDate!="")?$ToDate:date("d-m-Y");
+        $data["FromDate"]=($FromDate!="")?$FromDate:date("d-m-Y",strtotime('-10 days', strtotime(date("d-m-Y"))));
         $PartyId = $this->input->post('party');
-        $HsnId = $this->input->post('hsn');
         $ProductId = $this->input->post('product');
-        $FromDt = $this->input->post('FromDt');
-        $ToDt = $this->input->post('ToDt');
-        $Item="select i.*,p.name as PartyName,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
+        $Itemqry="select i.*,p.name as PartyName,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
+                from Item i
+                 left join party p on p.uuid=i.party_id
+                 left join product pr on pr.uuid=i.product_id
+                 left join hsn h on h.uuid=i.hsn_id
+                 where i.is_deleted=0
+                 order by i.a_inc desc;";
+        /*$Item="select i.*,p.name as PartyName,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
                 from Item i
                  left join party p on p.uuid=i.party_id
                  left join product pr on pr.uuid=i.product_id
                  left join hsn h on h.uuid=i.hsn_id
                  where i.is_deleted=false ".((!empty($PartyId))?" and i.party_id='".$PartyId."'":"")." ".((!empty($HsnId))?" and i.hsn_id='".$HsnId."'":"")." ".((!empty($ProductId))?" and i.product_id='".$ProductId."'":"")." 
-                 order by i.a_inc desc;";
-        $Item=$this->CommonModel->ExecuteDirectQry($Item);
+                 order by i.a_inc desc;";*/
+        $Itemres=$this->CommonModel->ExecuteDirectQry($Itemqry);
         /* echo "<pre>";
          print_r($agent);
          echo "<pre>";*/
-        $data["ItemData"]=$Item;
+        $data["ItemData"]=$Itemres;
         $data["pageName"]='ItemList';
+        $data["PartyId"]=$PartyId;
+        $data["ProductId"]=$ProductId;
         $this->load->view('Home',$data);
     }
     public function EditItem($para=null)
     {
+
         if($para){
-            $qry="select uuid,name,name,hsn_id
-            from Item
-            where uuid='".$para."';";
-            $vistor=$this->CommonModel->ExecuteDirectQry($qry,1);
+            $qry="select i.*,p.name as PartyName,p.email as PartyEmail,p.mobile as Partymobile,p.gst_no as Partygst,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
+                from Item i
+                 left join party p on p.uuid=i.party_id
+                 left join product pr on pr.uuid=i.product_id
+                 left join hsn h on h.uuid=i.hsn_id
+                 where i.uuid='".$para."' 
+                 order by i.a_inc desc;";
+            $itemedit=$this->CommonModel->ExecuteDirectQry($qry,1);
             /*echo "<pre>";
             print_r($vistor);
             echo "<pre>";*/
-            $data["ItemData"]=$vistor;
+            $data["ItemData"]=$itemedit;
             $data["pageName"]='addItem';
             $this->load->view('Home',$data);
         }else{
@@ -121,26 +137,60 @@ class Item extends MY_Controller {
     }
     public function UpdateItem()
     {
+        $Itemid = $this->input->post('itm');
+        $PartyId = $this->input->post('party');
         $HsnId = $this->input->post('hsn');
-        $Name = $this->input->post('Name');
-        $Itemid = $this->input->post('Itemid');
-        if(!empty($HsnId) && !empty($Name) && !empty($Itemid))
+        $ProductId = $this->input->post('product');
+        $Type = $this->input->post('Type');
+        $Quantity = $this->input->post('Quantity');//exit;
+        $Rate = $this->input->post('Rate');
+        $CalculatedAmount = $this->input->post('CalculatedAmount');
+        $Category = $this->input->post('Category');
+        $TransportCharge = $this->input->post('TransportCharge');
+        $GstType = $this->input->post('GstType');
+        $Gst = $this->input->post('Gst');
+        $TaxCalculated = $this->input->post('TaxCalculated');
+        $AmountWithTax = $this->input->post('AmountWithTax');
+        $Dimension = $this->input->post('Dimension');
+        $VehicleNo = $this->input->post('VehicleNo');
+        $GPNO = $this->input->post('GPNO');
+        $StateOfSupply = $this->input->post('StateOfSupply');
+        $PaymentMode = $this->input->post('PaymentMode');
+        $ReceivedAmount = ($this->input->post('ReceivedAmount')=="")?0:$this->input->post('ReceivedAmount');
+        $RestAmount = ($this->input->post('RestAmount')=="")?0:$this->input->post('RestAmount');
+
+        $Sgst=0;
+        $Cgst=0;
+        $Igst=0;
+        $SgstCalc=0;
+        $CgstCalc=0;
+        $IgstCalc=0;
+        if($GstType==1){
+            $Igst=$Gst;
+            $IgstCalc=$TaxCalculated;
+        }elseif ($GstType==2){
+            $Sgst=$Gst/2;
+            $Cgst=$Gst/2;
+            $CgstCalc=$TaxCalculated/2;
+            $SgstCalc=$TaxCalculated/2;
+        }
+        if(!empty($HsnId) && !empty($Itemid) && !empty($PartyId) && !empty($ProductId))
         {
-            $InsQry = "Update Item set name='" . $Name . "',hsn_id='" . $HsnId . "',updated_at=now(),updated_by='" . $this->session->userdata('uuid') . "' where uuid='".$Itemid."';";
-            if($this->CommonModel->create($InsQry))
+            $updateitemQry = "Update Item set party_id='" . $PartyId . "',hsn_id='" . $HsnId . "',quantity=" . $Quantity . ",category='" . $Category . "',transport_charge=" . $TransportCharge . ",total_cgst_calculated=" . $CgstCalc . ",total_sgst_calculated=" . $SgstCalc . ",total_igst_calculated=" . $IgstCalc . ",gst_type=" . $GstType . ",amount_with_tax=" . $AmountWithTax . ",dimension='" . $Dimension . "',vahical_no='" . $VehicleNo . "',gp_no='" . $GPNO . "',rest_amount=" . $RestAmount . ",recived_amount=" . $ReceivedAmount . ",mode_of_payment='" . $PaymentMode . "',state_of_supply='" . $StateOfSupply . "',igst=" . $Igst . ",sgst=" . $Sgst . ",cgst=" . $Cgst . ",total_gst=" . $TaxCalculated . ",rate=" . $Rate . ",calculated_amount=" . $CalculatedAmount . ",type='" . $Type . "',product_id='" . $ProductId . "',updated_at=now(),updated_by='" . $this->session->userdata('uuid') . "' where uuid='".$Itemid."';";//exit;
+            $upres=$this->CommonModel->create($updateitemQry);
+            if($upres)
             {
-                $this->_flashMessage(1,"Updated successfuly","error occure");;
+                $this->_flashMessage(1,"Updated successfuly","error occure");
+                return redirect('add-ilfs-item.jsp');
             }
             else
             {
                 //echo "error occure";
-                $this->_flashMessage(0,"Save successfuly","error occure");;
-            }//echo $this->db->last_query();exit;
-            return redirect('welcome-to-ilfs-Item-list.jsp');
-        }else{
-            $data["pageName"]='addItem';
-            $this->_flashMessage(0,"Save successfuly","Hsn code and  Name is medetory");;
-            $this->load->view('Home',$data);
+                $this->_flashMessage(0,"Save successfuly","error occure");
+                return redirect('add-ilfs-item.jsp');
+            }
+            //echo $this->db->last_query();exit;
+
         }
     }
     private function _flashMessage($successful, $successmsg, $failuremsg)

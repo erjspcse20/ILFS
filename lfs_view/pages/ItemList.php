@@ -5,6 +5,10 @@
     <title></title>
     <link href="<?=base_url('lfs_view/assets/datatables/dataTables.min.css')?>" rel="stylesheet" type="text/css"/>
     <script src="<?=base_url('lfs_view/assets/datatables/dataTables.min.js')?>" type="text/javascript"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Zebra_datepicker/1.9.12/css/bootstrap/zebra_datepicker.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Zebra_datepicker/1.9.12/zebra_datepicker.src.js"></script>
+    <link href="<?=base_url('lfs_view/')?>assets/select2/select2.css" rel="stylesheet">
+    <script src="<?=base_url('lfs_view/')?>assets/select2/select2.js"></script>
 </head>
 <div class="right_col" role="main">
     <div class="row">
@@ -21,6 +25,38 @@
 
         <div class="col-md-12 col-xs-12">
             <div class="x_panel">
+                <div class="row" style="padding-bottom: 4%;">
+
+                    <form method="post" action="<?=base_url('ilfs-bill-list.jsp')?>" class="valida" autocomplete="off" novalidate="novalidate" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-3">
+                                <label for="field-1-2">From Date </label>
+                                <div class="form-group">
+                                    <input type='text' class="datepick form-control" value="<?=date("d-m-Y",strtotime($FromDate))?>" name="fromdate" id="fromdate"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-3">
+                                <label for="field-1-2">To Date </label>
+                                <div class="form-group">
+                                    <input type='text' class="datepick form-control" value="<?=date("d-m-Y",strtotime($ToDate))?>" name="todate" id="todate"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-3">
+                                <label for="field-1-2">Party<span class="required">*</span></label>
+                                <div class="form-group">
+                                    <select name="party" id="party" class="selectdropdown">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-3">
+                                <label for="field-1-2"></label>
+                                <div class="form-group">
+                                    <input type='submit' style="margin-top: 9%;" class="btn btn-primary" value="Show" name="showdata" id="showdata"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <div class="x_title">
                     <h2>Item List<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
@@ -106,6 +142,36 @@
         </div>
     </div>
     <script>
+        let partyid="<?=$PartyId?>";
+        var qry="";
+        $.ajax({
+            type:"POST",
+            url:'<?php echo base_url()?>' + "ilfs-Data-Dropdown/partyList",
+            dataType: 'html',
+            data:qry,
+            success: function(res){
+
+                if (res)
+                {
+                    $('#party').html("");
+                    var json = $.parseJSON(res);
+                    $('#party').append('<option value="">Select Party</option>');
+                    for (var i=0;i<json.length;++i)
+                    {
+                        if(json[i].uuid.toUpperCase()==partyid.toUpperCase())
+                        {
+                            $('#party').append('<option value="'+json[i].uuid+'" selected="selected">'+json[i].name+'</option>');
+
+                        }
+                        else
+                        {
+                            $('#party').append('<option value="'+json[i].uuid+'">'+json[i].name+'</option>');
+                        }
+                    }
+                    $('#party').select2();
+                }
+            }
+        });
         $("#statedata").DataTable({
             dom: "<'row'<'col-sm-3'l><'col-sm-4 text-center'B><'col-sm-4'f>>tp",
             "lengthMenu": [[30, 60, 100, -1], [30, 60, 100, "All"]],
@@ -117,5 +183,9 @@
                 {extend: 'pdf', title: 'CountryList', className: 'btn-sm'},
                 {extend: 'print', className: 'btn-sm'}
             ]
+        });
+        $('.datepick').Zebra_DatePicker({
+            direction: true,
+            format: 'd-m-Y'
         });
     </script>

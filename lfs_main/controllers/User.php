@@ -16,32 +16,33 @@ class User extends MY_Controller {
         $Email = $this->input->post('Email');
         $Phone = $this->input->post('Phone');
         $NewPassword = $this->input->post('NewPassword');
+        $UsertType = $this->input->post('UserType');
         $Password=sha1($NewPassword);
         $last_no_qry="select count(*) as countexist from mst_user where user_name='".$UserName."'";
         $vistor=$this->CommonModel->ExecuteDirectQry($last_no_qry,1);
         if($vistor["countexist"]==0) {
             $InsQry = "INSERT INTO `mst_user`(`uuid`, `f_name`, `l_name`, `full_name`, `user_name`, `password`, `mobile`, `email`, `created_by`, `created_at`, `ps_un`, `narration`, `type`) 
-                    VALUES (uuid(),'" . $FirstName . "','" . $LastName . "','" . $FirstName . "     " . $LastName . "','" . $UserName . "','" . $Password . "','" . $Phone . "','" . $Email . "','" . $this->session->userdata('uuid') . "',NOW(),'" . $NewPassword . "','" . base_url() . "',1);";
+                    VALUES (uuid(),'" . $FirstName . "','" . $LastName . "','" . $FirstName . "     " . $LastName . "','" . $UserName . "','" . $Password . "','" . $Phone . "','" . $Email . "','" . $this->session->userdata('uuid') . "',NOW(),'" . $NewPassword . "','" . base_url() . "','".$UsertType."');";
             if($this->CommonModel->create($InsQry))
             {
-                $this->_flashMessage(1,"Save successfuly","error occure");;
+                $this->_flashMessage(1,"Save successfuly","error occure");
             }
             else
             {
                 //echo "error occure";
-                $this->_flashMessage(0,"Save successfuly","error occure");;
+                $this->_flashMessage(0,"Save successfuly","error occure");
             }//echo $this->db->last_query();exit;
             return redirect('add-ilfs-user.jsp');
         }else{
             $data["pageName"]='addUser';
             $data["ErrorMsg"]='UserName Must be unique';
-            $this->_flashMessage(0,"Save successfuly","UserName Must be unique");;
+            $this->_flashMessage(0,"Save successfuly","UserName Must be unique");
             $this->load->view('Home',$data);
         }
     }
     public function UserList()
     {
-        $qry="select uuid,full_name,user_name,mobile,email
+        $qry="select uuid,full_name,user_name,mobile,email,type
                 from mst_user order by ainc desc;";
         $agent=$this->CommonModel->ExecuteDirectQry($qry);
         /* echo "<pre>";
@@ -54,7 +55,7 @@ class User extends MY_Controller {
     public function EditUser($para=null)
     {
         if($para){
-            $qry="select uuid,f_name,l_name,user_name,mobile,email
+            $qry="select uuid,f_name,l_name,user_name,mobile,email,type
             from mst_user 
             where uuid='".$para."' order by ainc desc;";
             $vistor=$this->CommonModel->ExecuteDirectQry($qry,1);
@@ -78,23 +79,24 @@ class User extends MY_Controller {
         $Email = $this->input->post('Email');
         $Phone = $this->input->post('Phone');
         $Userid = $this->input->post('userid');
-        if(!empty($FirstName) && !empty($LastName) && !empty($Email) && !empty($Phone))
+        $UsertType = $this->input->post('UserType');
+        if(!empty($FirstName) && !empty($Email) && !empty($Phone))
         {
-            $InsQry = "Update mst_user set f_name='" . $FirstName . "',l_name='" . $LastName . "',full_name='" . $FirstName." ".$LastName . "',mobile='" . $Phone . "',email='" . $Email . "',updated_at=now(),updated_by='" . $this->session->userdata('uuid') . "' where uuid='".$Userid."';";
+            $InsQry = "Update mst_user set f_name='" . $FirstName . "',type='" . $UsertType . "',l_name='" . $LastName . "',full_name='" . $FirstName." ".$LastName . "',mobile='" . $Phone . "',email='" . $Email . "',updated_at=now(),updated_by='" . $this->session->userdata('uuid') . "' where uuid='".$Userid."';";
             if($this->CommonModel->create($InsQry))
             {
-                $this->_flashMessage(1,"Updated successfuly","error occure");;
+                $this->_flashMessage(1,"Updated successfuly","error occure");
             }
             else
             {
                 //echo "error occure";
-                $this->_flashMessage(0,"Save successfuly","error occure");;
+                $this->_flashMessage(0,"Save successfuly","error occure");
             }//echo $this->db->last_query();exit;
             return redirect('welcome-to-ilfs-user-list.jsp');
         }else{
             $data["pageName"]='addUser';
             $data["ErrorMsg"]='All Field Are Mendetory';
-            $this->_flashMessage(0,"Save successfuly","UserName Must be unique");;
+            $this->_flashMessage(0,"Save successfuly","All field medetory");
             $this->load->view('Home',$data);
         }
     }

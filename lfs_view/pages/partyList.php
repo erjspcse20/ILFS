@@ -18,6 +18,7 @@
         </p>
         <div class="col-md-12 col-xs-12">
             <div class="x_panel">
+
                 <div class="x_title">
                     <h2>User List<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
@@ -39,6 +40,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Mobile No</th>
+                            <th>Gst No</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -51,6 +53,7 @@
                                 <td><?=$UserData[$i]["name"];?></td>
                                 <td><?=$UserData[$i]["email"];?></td>
                                 <td><?=$UserData[$i]["mobile"];?></td>
+                                <td><?=$UserData[$i]["gst_no"];?></td>
                             </tr>
                             <?php
                         }
