@@ -209,7 +209,6 @@
             ]
         });
         $('.datepick').Zebra_DatePicker({
-            direction: true,
             format: 'd-m-Y'
         });
     </script>

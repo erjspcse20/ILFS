@@ -40,6 +40,7 @@
                             <th>Invoice No </th>
                             <th>Item Invoice No</th>
                             <th>Crated At</th>
+                            <th>Party Name</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -50,8 +51,9 @@
                                 <td><?=($i+1);?></td>
                                 <td><a target="_blank" href="<?=base_url('download/'.$InvoiceData[$i]["pdf_name"])?>" style="font-size:20px;"  name="pdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a></td>
                                 <td><?=$InvoiceData[$i]["invoice_no"];?></td>
-                                <td><?=$InvoiceData[$i]["item_no"];?></td>
+                                <td><?=str_ireplace("^",",",$InvoiceData[$i]["item_no"]);?></td>
                                 <td><?=$InvoiceData[$i]["created_at"];?></td>
+                                <td><?=$InvoiceData[$i]["PartyName"];?></td>
                             </tr>
                             <?php
                         }

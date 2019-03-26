@@ -27,7 +27,7 @@
             <div class="x_panel">
                 <div class="row" style="padding-bottom: 4%;">
 
-                    <form method="post" action="<?=base_url('ilfs-bill-list.jsp')?>" class="valida" autocomplete="off" novalidate="novalidate" enctype="multipart/form-data">
+                    <form method="post" action="<?=base_url('welcome-to-ilfs-item-list.jsp')?>" class="valida" autocomplete="off" novalidate="novalidate" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-xs-12 col-sm-3">
                                 <label for="field-1-2">From Date </label>
@@ -76,6 +76,8 @@
                             <th class="width25">S.No.</th>
                             <th class="width25">Edit </th>
                             <th class="width100">Invoice No</th>
+                            <th class="width100">Recived Amount</th>
+                            <th class="width100">Rest Amount</th>
                             <th class="width200">Party Name & Address</th>
                             <th class="width100">Created Date</th>
                             <th class="width100">Party Gst No</th>
@@ -98,6 +100,7 @@
                             <th class="width100"> DIMENSION/DMC </th>
                             <th class="width100"> vehicle no </th>
                             <th class="width100"> GP No. </th>
+                            <th class="width100"> Created By </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -108,6 +111,8 @@
                                 <td class="width25"><?=($i+1);?></td>
                                 <td class="width25"><a href="<?=base_url('welcome-to-ilfs-edit-item.jsp/'.$ItemData[$i]["uuid"])?>" style="font-size:20px;" name="ed"><i class="fa fa-pencil-square-o fa-fw"></i></i></a></td>
                                 <td class="width100"><?=$ItemData[$i]["item_published_id"];?></td>
+                                <td class="width100"><?=$ItemData[$i]["recived_amount"];?></td>
+                                <td class="width100"><?=$ItemData[$i]["rest_amount"];?></td>
                                 <td class="width200"><?=$ItemData[$i]["PartyName"]." ".$ItemData[$i]["PartyAddress"];?></td>
                                 <td class="width100"><?=date("d-M-Y",strtotime($ItemData[$i]["created_at"]));?></td>
                                 <td class="width100"><?=$ItemData[$i]["party_gst_no"];?></td>
@@ -130,6 +135,7 @@
                                 <td class="width100"><?=$ItemData[$i]["dimension"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["vahical_no"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["gp_no"];?></td>
+                                <td class="width100"><?=$ItemData[$i]["full_name"];?></td>
                             </tr>
                             <?php
                         }
@@ -185,7 +191,6 @@
             ]
         });
         $('.datepick').Zebra_DatePicker({
-            direction: true,
             format: 'd-m-Y'
         });
     </script>

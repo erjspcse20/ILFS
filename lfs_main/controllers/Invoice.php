@@ -10,7 +10,7 @@ class Invoice extends MY_Controller {
     }
     public function InvoiceList()
     {
-        $qryinvoice="select * from invoice order by ainc desc;";
+        $qryinvoice="select i.*,p.name as PartyName from invoice i left join party p on i.party_id=p.uuid order by ainc desc;";
         $invoicedata=$this->CommonModel->ExecuteDirectQry($qryinvoice);
         /* echo "<pre>";
          print_r($agent);

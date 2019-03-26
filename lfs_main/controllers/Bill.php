@@ -23,7 +23,7 @@ class Bill extends MY_Controller {
                  left join party p on p.uuid=i.party_id
                  left join product pr on pr.uuid=i.product_id
                  left join hsn h on h.uuid=i.hsn_id
-                 where i.is_deleted=0 and i.bill_status=2 ".((!empty($PartyId))?" and i.party_id='".$PartyId."'":"")." ".((!empty($FromDate))?" and i.created_at>='".date("Y-m-d H:i:s",strtotime($FromDate))."'":"")." ".((!empty($ToDate))?" and i.created_at<='".date("Y-m-d H:i:s",strtotime($ToDate."11:59:59"))."'":"")." 
+                 where i.is_deleted=0 and i.bill_status=2 ".((!empty($PartyId))?" and i.party_id='".$PartyId."'":"")." ".((!empty($FromDate))?" and i.created_at>='".date("Y-m-d H:i:s",strtotime($FromDate))."'":"")." ".((!empty($ToDate))?" and i.created_at<='".date("Y-m-d H:i:s",strtotime($ToDate."23:59:59"))."'":"")." 
                  order by i.a_inc desc;";
             $agent=$this->CommonModel->ExecuteDirectQry($qry);
         }
@@ -55,22 +55,22 @@ class Bill extends MY_Controller {
             $InvoiceNo .=$ItemRes[$i]["item_published_id"]."^";
         }
         $invoiceQry="select max(ainc) as maxno from invoice";
-        $InvRes=$this->CommonModel->ExecuteDirectQry($partyQry,1);
+        $InvRes=$this->CommonModel->ExecuteDirectQry($invoiceQry,1);
         $prefix="DL/JHA/";
          $html="";
         ini_set('memory_limit', '256M');
         $this->load->library('pdf');
         $pdf = $this->pdf->load();
         $data['title'] = "genrateBill";
-        $data['InvoiceNo'] = $prefix.date("M")."/".date("Y")."/".(($InvRes["maxno"]="NULL")?"1":($InvRes["maxno"]+1));
+        $data['InvoiceNo'] = $prefix.date("M")."/".date("Y")."/".(($InvRes["maxno"]=="NULL")?"1":($InvRes["maxno"]+1));
 
         $data['PartyData'] = $PartyRes;
         $data['ItemData'] = $ItemRes;
         $html .= $this->load->view('pages/printBill', $data, true);
         $pdf->WriteHTML($html);
         $output = 'upload/bill/' . date('Y_m_d_H_i_s') . '_.pdf';
-        $Qry[(count($Itemid))]="INSERT INTO `invoice`(`uuid`, `prefix`, `item_no`, `invoice_no`, `created_at`, `created_by`, `pdf_name`)
-                                  VALUES (uuid(),'" . $prefix . "','" .$InvoiceNo. "','" . $data['InvoiceNo'] . "',NOW(),'" . $this->session->userdata('uuid') . "','" . $output . "');";
+        $Qry[(count($Itemid))]="INSERT INTO `invoice`(`uuid`, `prefix`, `item_no`, `invoice_no`, `created_at`, `created_by`, `pdf_name`, `party_id`)
+                                  VALUES (uuid(),'" . $prefix . "','" .$InvoiceNo. "','" . $data['InvoiceNo'] . "',NOW(),'" . $this->session->userdata('uuid') . "','" . $output . "','" . $Partyid . "');";
         //print_r($Qry);exit;
         $this->CommonModel->createmultiquery($Qry);
         $pdf->Output("$output", 'F');

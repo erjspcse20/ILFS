@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 26, 2019 at 01:23 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 5.6.37
+-- Host: localhost
+-- Generation Time: Mar 26, 2019 at 08:21 PM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 5.6.38
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,7 +43,8 @@ CREATE TABLE `hsn` (
 --
 
 INSERT INTO `hsn` (`uuid`, `ainc`, `name`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
-('7f79f564-48f1-11e9-a446-14c2130d0834', 1, 'hsn12', '2019-03-18 01:46:07', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 14:01:50', '8605c690-2d55-11e9-8642-14c2130d0834');
+('7f79f564-48f1-11e9-a446-14c2130d0834', 1, 'hsn12', '2019-03-18 01:46:07', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 23:27:15', '8605c690-2d55-11e9-8642-14c2130d0834'),
+('e3902db4-4ff1-11e9-a446-14c2130d0834', 2, 'yashp123', '2019-03-26 23:36:33', '8605c690-2d55-11e9-8642-14c2130d0834', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -61,17 +62,18 @@ CREATE TABLE `invoice` (
   `created_by` varchar(50) NOT NULL,
   `updated_at` datetime NOT NULL,
   `updated_by` varchar(50) NOT NULL,
-  `pdf_name` varchar(100) NOT NULL
+  `pdf_name` varchar(100) NOT NULL,
+  `party_id` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `invoice`
 --
 
-INSERT INTO `invoice` (`uuid`, `ainc`, `prefix`, `item_no`, `invoice_no`, `created_at`, `created_by`, `updated_at`, `updated_by`, `pdf_name`) VALUES
-('4294993b-4fbd-11e9-b0ab-705a0f3cbc10', 1, 'DL/JHA/', 'IFLS2019Mar1^', 'DL/JHA/Mar/2019/1', '2019-03-26 17:19:49', '8605c690-2d55-11e9-8642-14c2130d0834', '0000-00-00 00:00:00', '', ''),
-('92dce933-4fbd-11e9-b0ab-705a0f3cbc10', 2, 'DL/JHA/', 'IFLS2019Mar3^', 'DL/JHA/Mar/2019/1', '2019-03-26 17:22:04', '8605c690-2d55-11e9-8642-14c2130d0834', '0000-00-00 00:00:00', '', 'upload/bill/2019_03_26_17_22_04_.pdf'),
-('980db6da-4fbf-11e9-b0ab-705a0f3cbc10', 3, 'DL/JHA/', 'IFLS2019Mar2^', 'DL/JHA/Mar/2019/1', '2019-03-26 17:36:32', '8605c690-2d55-11e9-8642-14c2130d0834', '0000-00-00 00:00:00', '', 'upload/bill/2019_03_26_17_36_32_.pdf');
+INSERT INTO `invoice` (`uuid`, `ainc`, `prefix`, `item_no`, `invoice_no`, `created_at`, `created_by`, `updated_at`, `updated_by`, `pdf_name`, `party_id`) VALUES
+('8ff5bce2-4ff5-11e9-a446-14c2130d0834', 3, 'DL/JHA/', 'IFLS2019Mar4^', 'DL/JHA/Mar/2019/3', '2019-03-27 00:02:51', '8605c690-2d55-11e9-8642-14c2130d0834', '0000-00-00 00:00:00', '', 'upload/bill/2019_03_27_00_02_51_.pdf', 'd101566e-4ff1-11e9-a446-14c2130d0834'),
+('b3f3c04c-4fed-11e9-a446-14c2130d0834', 1, 'DL/JHA/', 'IFLS2019Mar1^', 'DL/JHA/Mar/2019/1', '2019-03-26 23:06:35', '8605c690-2d55-11e9-8642-14c2130d0834', '0000-00-00 00:00:00', '', 'upload/bill/2019_03_26_23_06_35_.pdf', '749a6422-4af8-11e9-a446-14c2130d0834'),
+('c1d3aab0-4fed-11e9-a446-14c2130d0834', 2, 'DL/JHA/', 'IFLS2019Mar3^IFLS2019Mar2^', 'DL/JHA/Mar/2019/2', '2019-03-26 23:06:58', '8605c690-2d55-11e9-8642-14c2130d0834', '0000-00-00 00:00:00', '', 'upload/bill/2019_03_26_23_06_58_.pdf', 'bcdf0a14-48ee-11e9-a446-14c2130d0834');
 
 -- --------------------------------------------------------
 
@@ -121,8 +123,9 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`uuid`, `a_inc`, `item_published_id`, `party_id`, `product_id`, `hsn_id`, `created_at`, `created_by`, `updated_at`, `updated_by`, `type`, `quantity`, `rate`, `calculated_amount`, `category`, `transport_charge`, `total_gst`, `sgst`, `cgst`, `igst`, `gst_type`, `total_igst_calculated`, `total_sgst_calculated`, `total_cgst_calculated`, `amount_with_tax`, `dimension`, `vahical_no`, `gp_no`, `state_of_supply`, `mode_of_payment`, `recived_amount`, `rest_amount`, `is_deleted`, `bill_status`) VALUES
-('51fa8051-4ee6-11e9-b259-705a0f3cbc10', 1, 'IFLS2019Mar1', '749a6422-4af8-11e9-a446-14c2130d0834', '729c3445-493c-11e9-aa7a-705a0f3cbc10', '7f79f564-48f1-11e9-a446-14c2130d0834', '2019-03-25 15:41:13', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 15:40:10', '8605c690-2d55-11e9-8642-14c2130d0834', 'CUM', 2, 100, 200, 'SandSubTitute', 23, 22.3, 0, 0, 0, 1, 22.3, 0, 0, 245.3, 'dwfs', 'sdfgsdf', 'dsfgsd', 'sdfgsdf', 'CreditCard', 100, 145.3, 0, 1),
-('672bf762-4efb-11e9-b259-705a0f3cbc10', 2, 'IFLS2019Mar2', 'bcdf0a14-48ee-11e9-a446-14c2130d0834', '729c3445-493c-11e9-aa7a-705a0f3cbc10', '7f79f564-48f1-11e9-a446-14c2130d0834', '2019-03-25 18:12:08', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 15:01:55', '8605c690-2d55-11e9-8642-14c2130d0834', 'NUM', 3, 34, 102, 'SandSubTitute', 324, 55.38, 6.5, 6.5, 0, 2, 0, 27.69, 27.69, 481.38, 'ere', 'werter', 'werter', 'ertre', 'Paytm', 34, 447.38, 0, 1),
+('4e9f02a6-4ff2-11e9-a446-14c2130d0834', 4, 'IFLS2019Mar4', 'd101566e-4ff1-11e9-a446-14c2130d0834', 'f538d296-4ff1-11e9-a446-14c2130d0834', 'e3902db4-4ff1-11e9-a446-14c2130d0834', '2019-03-26 23:39:33', '8605c690-2d55-11e9-8642-14c2130d0834', NULL, NULL, 'TRIP', 10, 500, 5000, 'BSB', 200, 520, 5, 5, 0, 2, 0, 260, 260, 5720, 'hjbjk', 'dlyasho123', 'yasho123', 'delhi', 'Cash', 5700, 20, 0, 1),
+('51fa8051-4ee6-11e9-b259-705a0f3cbc10', 1, 'IFLS2019Mar1', '749a6422-4af8-11e9-a446-14c2130d0834', '729c3445-493c-11e9-aa7a-705a0f3cbc10', '7f79f564-48f1-11e9-a446-14c2130d0834', '2019-03-25 15:41:13', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 23:27:33', '8605c690-2d55-11e9-8642-14c2130d0834', 'CUM', 2, 100, 200, 'SandSubTitute', 23, 22.3, 0, 0, 0, 1, 22.3, 0, 0, 245.3, 'dwfs', 'sdfgsdf', 'dsfgsd', 'sdfgsdf', 'CreditCard', 100, 145.3, 0, 1),
+('672bf762-4efb-11e9-b259-705a0f3cbc10', 2, 'IFLS2019Mar2', 'bcdf0a14-48ee-11e9-a446-14c2130d0834', '729c3445-493c-11e9-aa7a-705a0f3cbc10', '7f79f564-48f1-11e9-a446-14c2130d0834', '2019-03-25 18:12:08', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 23:17:36', '8605c690-2d55-11e9-8642-14c2130d0834', 'NUM', 3, 34, 102, 'SandSubTitute', 324, 55.38, 6.5, 6.5, 0, 2, 0, 27.69, 27.69, 481.38, 'ere', 'werter', 'werter', 'ertre', 'Paytm', 340, 141.38, 0, 1),
 ('e0ff7ac5-4f87-11e9-b579-705a0f3cbc10', 3, 'IFLS2019Mar3', 'bcdf0a14-48ee-11e9-a446-14c2130d0834', '729c3445-493c-11e9-aa7a-705a0f3cbc10', '7f79f564-48f1-11e9-a446-14c2130d0834', '2019-03-26 10:57:42', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 14:55:03', '8605c690-2d55-11e9-8642-14c2130d0834', 'CUM', 3, 34, 102, 'SandSubTitute', 324, 55.38, 6.5, 6.5, 0, 2, 0, 27.69, 27.69, 481.38, 'ere', 'werter', 'werter', 'ertre', 'Paytm', 34, 447.38, 0, 1);
 
 -- --------------------------------------------------------
@@ -156,8 +159,8 @@ CREATE TABLE `mst_user` (
 
 INSERT INTO `mst_user` (`uuid`, `aInc`, `f_name`, `l_name`, `full_name`, `user_name`, `password`, `mobile`, `email`, `created_by`, `created_at`, `updated_by`, `updated_at`, `ps_un`, `narration`, `type`) VALUES
 ('60edea8c-48de-11e9-a446-14c2130d0834', 2, 'jai', 'pandey', 'jai pandey', 'jai', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '9479275716', 'jaishankarpandey329@gmail.com', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-17 23:29:15', '8605', '2019-03-26 16:48:05', '1234', 'http://localhost/il-fs/', 1),
-('8605c690-2d55-11e9-8642-14c2130d0834', 1, 'Administrator', '', 'Administrator ', 'admin', '8cb2237d0679ca88db6464eac60da96345513964', '9479275716', 'jaishankarpandey329@gmail.com', '', '0000-00-00 00:00:00', '8605', '2019-03-26 17:51:11', '12345', 'http://localhost:8089/il-fs/', 0),
-('ea54e582-4fb8-11e9-b0ab-705a0f3cbc10', 3, 'jai', 'pandey', 'jai     pandey', 'admin34', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '9479275716', 'jaishankarpandey329@gmail.com', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 16:48:43', '0', '0000-00-00 00:00:00', '1234', 'http://localhost:8089/il-fs/', 0);
+('8605c690-2d55-11e9-8642-14c2130d0834', 1, 'Administrator', '', 'Administrator ', 'admin', '8cb2237d0679ca88db6464eac60da96345513964', '9479275716', 'jaishankarpandey329@gmail.com', '', '0000-00-00 00:00:00', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 23:24:01', '12345', 'http://localhost/il-fs/', 0),
+('ea54e582-4fb8-11e9-b0ab-705a0f3cbc10', 3, 'jai', 'pandey', 'jai     pandey', 'admin34', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '9479275716', 'jaishankarpandey329@gmail.com', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 16:48:43', '0', '0000-00-00 00:00:00', '1234', 'http://localhost/il-fs/', 0);
 
 -- --------------------------------------------------------
 
@@ -185,7 +188,8 @@ CREATE TABLE `party` (
 
 INSERT INTO `party` (`uuid`, `ainc`, `name`, `mobile`, `email`, `created_at`, `created_by`, `updated_at`, `updated_by`, `address`, `gst_no`) VALUES
 ('749a6422-4af8-11e9-a446-14c2130d0834', 2, 'jai shankar pandey', '9479275716', 'jaishankarpandey329@gmail.com', '2019-03-20 15:40:58', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 16:16:27', '8605c690-2d55-11e9-8642-14c2130d0834', 'green ', 'sfggdfg'),
-('bcdf0a14-48ee-11e9-a446-14c2130d0834', 1, 'jai shankar pa', '9479275716', 'erjspcse2@gmail.com', '2019-03-18 01:26:21', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 16:08:11', '8605c690-2d55-11e9-8642-14c2130d0834', 'jsp address', 'sdgfsdg');
+('bcdf0a14-48ee-11e9-a446-14c2130d0834', 1, 'jai shankar pa', '9479275716', 'erjspcse2@gmail.com', '2019-03-18 01:26:21', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 16:08:11', '8605c690-2d55-11e9-8642-14c2130d0834', 'jsp address', 'sdgfsdg'),
+('d101566e-4ff1-11e9-a446-14c2130d0834', 3, 'yasho', '88888888', 'yasho@gmail.com', '2019-03-26 23:36:02', '8605c690-2d55-11e9-8642-14c2130d0834', NULL, NULL, '143, address ', '78561234549');
 
 -- --------------------------------------------------------
 
@@ -210,7 +214,8 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`uuid`, `hsn_id`, `a_inc`, `name`, `created_at`, `created_by`, `updated_at`, `updated_by`) VALUES
 ('729c3445-493c-11e9-aa7a-705a0f3cbc10', '7f79f564-48f1-11e9-a446-14c2130d0834', 1, 'prod1', '2019-03-18 10:42:38', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 15:07:17', '8605c690-2d55-11e9-8642-14c2130d0834'),
-('e2d49916-4aea-11e9-a446-14c2130d0834', '7f79f564-48f1-11e9-a446-14c2130d0834', 2, 'prod2', '2019-03-20 14:03:49', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 15:12:38', '8605c690-2d55-11e9-8642-14c2130d0834');
+('e2d49916-4aea-11e9-a446-14c2130d0834', '7f79f564-48f1-11e9-a446-14c2130d0834', 2, 'prod2', '2019-03-20 14:03:49', '8605c690-2d55-11e9-8642-14c2130d0834', '2019-03-26 23:27:22', '8605c690-2d55-11e9-8642-14c2130d0834'),
+('f538d296-4ff1-11e9-a446-14c2130d0834', 'e3902db4-4ff1-11e9-a446-14c2130d0834', 3, 'product123', '2019-03-26 23:37:03', '8605c690-2d55-11e9-8642-14c2130d0834', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -266,7 +271,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `hsn`
 --
 ALTER TABLE `hsn`
-  MODIFY `ainc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ainc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `invoice`
@@ -278,7 +283,7 @@ ALTER TABLE `invoice`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `a_inc` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `a_inc` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `mst_user`
@@ -290,13 +295,13 @@ ALTER TABLE `mst_user`
 -- AUTO_INCREMENT for table `party`
 --
 ALTER TABLE `party`
-  MODIFY `ainc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ainc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `a_inc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `a_inc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -97,7 +97,7 @@ $route['ilfs-bill-list.jsp'] = 'Bill/ItemList';
 $route['welcome-to-ilfs-gentate-bill.jsp'] = 'Bill/GenrateBill';
 
 
-$route['download/(:any)/(:any)/(:any)'] = "/Filecontroller/download/$1/$2/$3";
+$route['download/(:any)/(:any)/(:any)'] = "/Filecontroller/downloadfgt/$1/$2/$3";
 
 
 

@@ -86,12 +86,13 @@ class Item extends MY_Controller {
         $data["FromDate"]=($FromDate!="")?$FromDate:date("d-m-Y",strtotime('-10 days', strtotime(date("d-m-Y"))));
         $PartyId = $this->input->post('party');
         $ProductId = $this->input->post('product');
-        $Itemqry="select i.*,p.name as PartyName,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
+        $Itemqry="select i.*,p.name as PartyName,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName,u.full_name
                 from Item i
                  left join party p on p.uuid=i.party_id
                  left join product pr on pr.uuid=i.product_id
                  left join hsn h on h.uuid=i.hsn_id
-                 where i.is_deleted=0
+                 left join mst_user u on i.created_by=u.uuid
+                 where i.is_deleted=0 ".((!empty($PartyId))?" and i.party_id='".$PartyId."'":"")."  ".((!empty($FromDate))?" and i.created_at>='".date("Y-m-d H:i:s",strtotime($FromDate))."'":"")." ".((!empty($ToDate))?" and i.created_at<='".date("Y-m-d H:i:s",strtotime($ToDate."23:59:59"))."'":"")."
                  order by i.a_inc desc;";
         /*$Item="select i.*,p.name as PartyName,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
                 from Item i
