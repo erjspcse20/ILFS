@@ -45,18 +45,19 @@ class Bill extends MY_Controller {
          $partyQry="select * from party where uuid='".$Partyid."'";
          $PartyRes=$this->CommonModel->ExecuteDirectQry($partyQry,1);
             $InvoiceNo="";
+        $invoiceQry="select max(ainc) as maxno from invoice";
+        $InvRes=$this->CommonModel->ExecuteDirectQry($partyQry,1);
+        $prefix="DL/JHA/";
+        $data['InvoiceNo'] = $prefix.date("M")."/".date("Y")."/".(($InvRes["maxno"]="NULL")?"1":($InvRes["maxno"]+1));
         for($i=0;$i<count($Itemid);$i++){
             $itemQry="select i.*,h.name as hsnCode,p.name as productName from item i
                         left outer join hsn h on i.hsn_id=h.uuid
                         left outer join product p on i.product_id=p.uuid
                           where i.uuid='".$Itemid[$i]."'";
             $ItemRes[$i]=$this->CommonModel->ExecuteDirectQry($itemQry,1);
-            $Qry[$i]="update item set bill_status=1 where uuid='".$Itemid[$i]."'";
+            $Qry[$i]="update item set bill_status=1,invoice_no='".$data['InvoiceNo']."' where uuid='".$Itemid[$i]."'";
             $InvoiceNo .=$ItemRes[$i]["item_published_id"]."^";
         }
-        $invoiceQry="select max(ainc) as maxno from invoice";
-        $InvRes=$this->CommonModel->ExecuteDirectQry($invoiceQry,1);
-        $prefix="DL/JHA/";
          $html="";
         ini_set('memory_limit', '256M');
         $this->load->library('pdf');
