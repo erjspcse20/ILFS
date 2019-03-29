@@ -74,7 +74,6 @@
                         <thead>
                         <tr>
                             <th class="width25">S.No.</th>
-                            <th class="width25">Edit </th>
                             <th class="width100">Invoice No</th>
                             <th class="width100">Recived Amount</th>
                             <th class="width100">Rest Amount</th>
@@ -101,6 +100,7 @@
                             <th class="width100"> vehicle no </th>
                             <th class="width100"> GP No. </th>
                             <th class="width100"> Created By </th>
+                            <th class="width25">Edit </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -109,12 +109,11 @@
                             ?>
                             <tr>
                                 <td class="width25"><?=($i+1);?></td>
-                                <td class="width25"><a href="<?=base_url('welcome-to-ilfs-edit-item.jsp/'.$ItemData[$i]["uuid"])?>" style="font-size:20px;" name="ed"><i class="fa fa-pencil-square-o fa-fw"></i></i></a></td>
                                 <td class="width100"><?=$ItemData[$i]["item_published_id"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["recived_amount"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["rest_amount"];?></td>
                                 <td class="width200"><?=$ItemData[$i]["PartyName"]." ".$ItemData[$i]["PartyAddress"];?></td>
-                                <td class="width100"><?=date("d-M-Y",strtotime($ItemData[$i]["created_at"]));?></td>
+                                <td class="width100"><?=date("d-M-Y",strtotime($ItemData[$i]["custom_created_at"]));?></td>
                                 <td class="width100"><?=$ItemData[$i]["party_gst_no"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["state_of_supply"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["ProductName"];?></td>
@@ -136,6 +135,7 @@
                                 <td class="width100"><?=$ItemData[$i]["vahical_no"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["gp_no"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["full_name"];?></td>
+                                <td class="width25"><a href="<?=base_url('welcome-to-ilfs-edit-item.jsp/'.$ItemData[$i]["uuid"])?>" style="font-size:20px;" name="ed"><i class="fa fa-pencil-square-o fa-fw"></i></i></a></td>
                             </tr>
                             <?php
                         }

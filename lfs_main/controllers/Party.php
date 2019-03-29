@@ -15,9 +15,10 @@ class Party extends MY_Controller {
         $Phone = $this->input->post('Phone');
         $Address = $this->input->post('Address');
         $Gst = $this->input->post('Gst');
+        $Pan = $this->input->post('Pan');
         if($Name!="") {
-            $InsQry = "INSERT INTO `party`(`uuid`, `name`, `mobile`, `email`, `gst_no`, `address`, `created_by`, `created_at`) 
-                    VALUES (uuid(),'" . $Name . "','" . $Phone . "','" . $Email . "','" . $Gst . "','" . $Address . "','" . $this->session->userdata('uuid') . "',NOW());";
+            $InsQry = "INSERT INTO `party`(`uuid`, `name`, `mobile`, `email`, `gst_no`, `pan_no`, `address`, `created_by`, `created_at`) 
+                    VALUES (uuid(),'" . $Name . "','" . $Phone . "','" . $Email . "','" . $Gst . "','" . $Pan . "','" . $Address . "','" . $this->session->userdata('uuid') . "',NOW());";
             if($this->CommonModel->create($InsQry))
             {
                 $this->_flashMessage(1,"Save successfuly","error occure");;
@@ -37,7 +38,7 @@ class Party extends MY_Controller {
     }
     public function PartyList()
     {
-        $qry="select uuid,name,mobile,email,address,gst_no
+        $qry="select uuid,name,mobile,email,address,gst_no,pan_no
                 from party order by ainc desc;";
         $agent=$this->CommonModel->ExecuteDirectQry($qry);
         /* echo "<pre>";
@@ -50,7 +51,7 @@ class Party extends MY_Controller {
     public function EditParty($para=null)
     {
         if($para){
-            $qry="select uuid,name,mobile,email,address,gst_no
+            $qry="select uuid,name,mobile,email,address,gst_no,pan_no
             from party 
             where uuid='".$para."' order by ainc desc;";
             $vistor=$this->CommonModel->ExecuteDirectQry($qry,1);
@@ -75,9 +76,10 @@ class Party extends MY_Controller {
         $Address = $this->input->post('Address');
         $Gst = $this->input->post('Gst');
         $Partyid = $this->input->post('partyid');
+        $Pan = $this->input->post('Pan');
         if(!empty($Name) && !empty($Partyid))
         {
-            $InsQry = "Update party set name='" . $Name . "',mobile='" . $Phone . "',gst_no='" . $Gst . "',email='" . $Email . "',address='" . $Address . "',updated_at=now(),updated_by='" . $this->session->userdata('uuid') . "' where uuid='".$Partyid."';";
+            $InsQry = "Update party set name='" . $Name . "',pan_no='".$Pan."',mobile='" . $Phone . "',gst_no='" . $Gst . "',email='" . $Email . "',address='" . $Address . "',updated_at=now(),updated_by='" . $this->session->userdata('uuid') . "' where uuid='".$Partyid."';";
             if($this->CommonModel->create($InsQry))
             {
                 $this->_flashMessage(1,"Updated successfuly","error occure");;

@@ -5,6 +5,7 @@ $Mobile=isset($UserData["mobile"])?$UserData["mobile"]:"";
 $Address=isset($UserData["address"])?$UserData["address"]:"";
 $Email=isset($UserData["email"])?$UserData["email"]:"";
 $Gst=isset($UserData["gst_no"])?$UserData["gst_no"]:"";
+$Pan=isset($UserData["pan_no"])?$UserData["pan_no"]:"";
 ?>
 <div class="right_col" role="main">
     <div class="row">
@@ -57,6 +58,10 @@ $Gst=isset($UserData["gst_no"])?$UserData["gst_no"]:"";
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
                             <input type="text" class="form-control" id="Gst" value="<?=$Gst?>" name="Gst" placeholder="Gst">
+
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                            <input type="text" class="form-control" id="Pan" value="<?=$Pan?>" name="Pan" placeholder="Pan No">
 
                         </div>
                         <div class="ln_solid"></div>

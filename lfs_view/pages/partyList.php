@@ -20,7 +20,7 @@
             <div class="x_panel">
 
                 <div class="x_title">
-                    <h2>User List<small></small></h2>
+                    <h2>Party List<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -36,11 +36,12 @@
                         <thead>
                         <tr>
                             <th>S.No.</th>
-                            <th>Edit </th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Mobile No</th>
                             <th>Gst No</th>
+                            <th>Pan No</th>
+                            <th>Edit </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -49,11 +50,12 @@
                             ?>
                             <tr>
                                 <td><?=($i+1);?></td>
-                                <td><a href="<?=base_url('welcome-to-ilfs-edit-party.jsp/'.$UserData[$i]["uuid"])?>" style="font-size:20px;" name="ed"><i class="fa fa-pencil-square-o fa-fw"></i></i></a></td>
                                 <td><?=$UserData[$i]["name"];?></td>
                                 <td><?=$UserData[$i]["email"];?></td>
                                 <td><?=$UserData[$i]["mobile"];?></td>
                                 <td><?=$UserData[$i]["gst_no"];?></td>
+                                <td><?=$UserData[$i]["pan_no"];?></td>
+                                <td><a href="<?=base_url('welcome-to-ilfs-edit-party.jsp/'.$UserData[$i]["uuid"])?>" style="font-size:20px;" name="ed"><i class="fa fa-pencil-square-o fa-fw"></i></i></a></td>
                             </tr>
                             <?php
                         }

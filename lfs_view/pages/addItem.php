@@ -21,6 +21,7 @@ $VehicleNo=isset($ItemData["vahical_no"])?$ItemData["vahical_no"]:"";
 $Dimension=isset($ItemData["dimension"])?$ItemData["dimension"]:"";
 $TotalAmountWithTax=isset($ItemData["amount_with_tax"])?$ItemData["amount_with_tax"]:"";
 $TotalTax=isset($ItemData["total_gst"])?$ItemData["total_gst"]:"";
+$CreatedAt=isset($ItemData["custom_created_at"])?date("d-m-Y",strtotime($ItemData["custom_created_at"])):date("d-m-Y");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -335,6 +336,21 @@ $TotalTax=isset($ItemData["total_gst"])?$ItemData["total_gst"]:"";
                             </div>
 
                         </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ReceivedAmount">Creation Date
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="CreatedAt" value="<?=$CreatedAt?>" name="CreatedAt" class="form-control datepick col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+
+                                </div>
+                            </div>
+
+                        </div>
 
                         <div class="ln_solid"></div>
                         <div class="form-group">
@@ -360,6 +376,7 @@ $TotalTax=isset($ItemData["total_gst"])?$ItemData["total_gst"]:"";
 
     let typedata='[{"uuid":"MT","name":"M.T"},{"uuid":"CUM","name":"CUM"},{"uuid":"SQM","name":"SQM"},{"uuid":"NUM","name":"NUM"},{"uuid":"TRIP","name":"TRIP"}]';
     let paymentmode='[{"uuid":"Cash","name":"Cash"},{"uuid":"CreditCard","name":"Credit Card"},{"uuid":"DebitCard","name":"Debit card"},{"uuid":"Paytm","name":"Paytm"},{"uuid":"Cheque","name":"Cheque"},{"uuid":"BhimUpi","name":"Bhim upi"},{"uuid":"PhonePay","name":"Phone Pay"},{"uuid":"Other","name":"Other"}]';
+    let statedata='[{"uuid":"06-Haryana","name":"06-Haryana"},{"uuid":"07-Delhi","name":"07-Delhi"},{"uuid":"08-Rajasthan","name":"08-Rajasthan"},{"uuid":"09-Uttar Pradesh","name":"09-Uttar Pradesh"},{"uuid":"10-Bihar","name":"10-Bihar"},{"uuid":"11-Sikkim","name":"11-Sikkim"},{"uuid":"12-Arunachal Pradesh","name":"12-Arunachal Pradesh"},{"uuid":"13-Nagaland","name":"13-Nagaland"},{"uuid":"14-Manipur","name":"14-Manipur"},{"uuid":"15-Mizoram","name":"15-Mizoram"},{"uuid":"16-Tripura","name":"16-Tripura"},{"uuid":"17-Meghalaya","name":"17-Meghalaya"},{"uuid":"18-Assam","name":"18-Assam"},{"uuid":"19-West Bengal","name":"19-West Bengal"},{"uuid":"20-Jharkhand","name":"20-Jharkhand"},{"uuid":"21-Odisha","name":"21-Odisha"},{"uuid":"22-Chhattisgarh","name":"22-Chhattisgarh"},{"uuid":"23-Madhya Pradesh","name":"23-Madhya Pradesh"},{"uuid":"24-Gujarat","name":"24-Gujarat"},{"uuid":"25-Daman And Diu","name":"25-Daman And Diu"},{"uuid":"26-Dadra And Nagar Haveli","name":"26-Dadra And Nagar Haveli"},{"uuid":"27-Maharashtra","name":"27-Maharashtra"},{"uuid":"29-Karnataka","name":"29-Karnataka"},{"uuid":"30-Goa","name":"30-Goa"},{"uuid":"31-Lakshdweep","name":"31-Lakshdweep"},{"uuid":"32-Kerala","name":"32-Kerala"},{"uuid":"33-Tamil Nadu","name":"33-Tamil Nadu"},{"uuid":"34-Puducherry","name":"34-Puducherry"},{"uuid":"35-Andaman And Nicobar Islands","name":"35-Andaman And Nicobar Islands"},{"uuid":"36-Telangana","name":"36-Telangana"},{"uuid":"37-Andhra Pradesh","name":"37-Andhra Pradesh"},{"uuid":"97-Other Territory","name":"97-Other Territory"}]';
     $(document).ready(function() {
         let jsontype = $.parseJSON(typedata);
         let jsonpayment = $.parseJSON(paymentmode);
@@ -624,6 +641,9 @@ $TotalTax=isset($ItemData["total_gst"])?$ItemData["total_gst"]:"";
             alert("please Select product");
             return false;
         }
+    });
+    $('.datepick').Zebra_DatePicker({
+        format: 'd-m-Y'
     });
 
 </script>
