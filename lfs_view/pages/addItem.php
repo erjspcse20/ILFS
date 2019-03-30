@@ -21,6 +21,7 @@ $VehicleNo=isset($ItemData["vahical_no"])?$ItemData["vahical_no"]:"";
 $Dimension=isset($ItemData["dimension"])?$ItemData["dimension"]:"";
 $TotalAmountWithTax=isset($ItemData["amount_with_tax"])?$ItemData["amount_with_tax"]:"";
 $TotalTax=isset($ItemData["total_gst"])?$ItemData["total_gst"]:"";
+$StateCode=isset($ItemData["state_code"])?$ItemData["state_code"]:"";
 $CreatedAt=isset($ItemData["custom_created_at"])?date("d-m-Y",strtotime($ItemData["custom_created_at"])):date("d-m-Y");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -30,6 +31,8 @@ $CreatedAt=isset($ItemData["custom_created_at"])?date("d-m-Y",strtotime($ItemDat
     <title></title>
     <link href="<?=base_url('lfs_view/')?>assets/select2/select2.css" rel="stylesheet">
     <script src="<?=base_url('lfs_view/')?>assets/select2/select2.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Zebra_datepicker/1.9.12/css/bootstrap/zebra_datepicker.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Zebra_datepicker/1.9.12/zebra_datepicker.src.js"></script>
     <style>
         .selectdropdown{
             width: 100%;
@@ -74,7 +77,7 @@ $CreatedAt=isset($ItemData["custom_created_at"])?date("d-m-Y",strtotime($ItemDat
 
                     <br />
 
-                    <form  id="addItem" method="post" name="addItem" action="<?=($Itemid=="")?base_url('welcome-to-ilfs-add-item.jsp'):base_url('welcome-to-ilfs-update-item.jsp')?>" class="form-horizontal form-label-left">
+                    <form  id="addItemform" method="post" name="addItemform" action="<?=($Itemid=="")?base_url('welcome-to-ilfs-add-item.jsp'):base_url('welcome-to-ilfs-update-item.jsp')?>" class="form-horizontal form-label-left">
                         <input type="hidden" name="itm" id="itm" value="<?=$Itemid?>"/>
                         <div class="form-group">
                             <div class="col-md-12">
@@ -339,17 +342,22 @@ $CreatedAt=isset($ItemData["custom_created_at"])?date("d-m-Y",strtotime($ItemDat
                         <div class="form-group">
                             <div class="col-md-12">
                                 <div class="col-md-6">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ReceivedAmount">Creation Date
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">State Code<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6">
+                                        <select name="StateCode" id="StateCode" class="selectdropdown">
+                                        </select>
+                                        <span id="agent-error" style="color:#F00;"><?=form_error('StateCode')?></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="CreatedAt">Creation Date
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input type="text" id="CreatedAt" value="<?=$CreatedAt?>" name="CreatedAt" class="form-control datepick col-md-7 col-xs-12">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-
-                                </div>
                             </div>
-
                         </div>
 
                         <div class="ln_solid"></div>
@@ -380,6 +388,7 @@ $CreatedAt=isset($ItemData["custom_created_at"])?date("d-m-Y",strtotime($ItemDat
     $(document).ready(function() {
         let jsontype = $.parseJSON(typedata);
         let jsonpayment = $.parseJSON(paymentmode);
+        let jsonstate = $.parseJSON(statedata);
         $('#Type').append('<option value="">Select Type</option>');
         $('#PaymentMode').append('<option value="">Select Payment Mode</option>');
         for(let j=0;j<jsontype.length;j++){
@@ -405,6 +414,18 @@ $CreatedAt=isset($ItemData["custom_created_at"])?date("d-m-Y",strtotime($ItemDat
             }
         }
         $('#PaymentMode').select2();
+        for(let j=0;j<jsonstate.length;j++){
+
+            if(jsonstate[j].uuid.toUpperCase()=="<?=$StateCode?>")
+            {
+                $('#StateCode').append('<option value="'+jsonstate[j].uuid+'" selected="selected">'+jsonstate[j].name+'</option>');
+
+            }else
+            {
+                $('#StateCode').append('<option value="'+jsonstate[j].uuid+'">'+jsonstate[j].name+'</option>');
+            }
+        }
+        $('#StateCode').select2();
         var qry="";
         $.ajax({
             type:"POST",

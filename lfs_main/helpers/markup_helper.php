@@ -64,7 +64,7 @@ function numberTowords($num)
         }
     }
     if($decnum > 0){
-        $rettxt .= " and ";
+        $rettxt .= " & ";
         if($decnum < 20){
             $rettxt .= $ones[$decnum];
         }elseif($decnum < 100){

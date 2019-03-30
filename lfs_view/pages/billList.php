@@ -72,7 +72,34 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    <button type="submit" name="genratebill" id="genratebill" class="btn btn-primary">Genrate Bill</button>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-3">
+                            <label for="field-1-2">Bill Date </label>
+                            <div class="form-group">
+                                <input type='text' class="datepick form-control" value="<?=date("d-m-Y")?>" name="billDate" id="billDate"/>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-3">
+                            <label for="field-1-2">Bill Type<span class="required">*</span></label>
+                            <div class="form-group">
+                                <select name="BillType" id="BillType" class="selectdropdown">
+                                    <option value="Tax Invoice">Tax Invoice</option>
+                                    <option value="Bill Of Supply">Bill Of Supply</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3">
+                            <label for="field-1-2"> </label>
+                            <div class="form-group" style="padding-top: 7%;">
+                                <button type="submit" name="genratebill" id="genratebill" class="btn btn-primary">Genrate Bill</button>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3">
+
+                        </div>
+                    </div>
+
                     <table id="statedata" style="width:3000px!important;" class="table table-striped table-bordered table-hover">
                         <thead>
                         <tr>
@@ -147,6 +174,7 @@
         </div>
     </div>
     <script>
+        $('#BillType').select2();
         let partyid="<?=$PartyId?>";
         var qry="";
         $.ajax({

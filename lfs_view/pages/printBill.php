@@ -9,13 +9,13 @@
 
     <tr>
         <td style="height:30px; border-bottom:1px solid;" valign="top">
-            <h1 style="text-align:center; font-weight:bolder; text-transform:uppercase; margin-top:3px; margin-bottom:3px;"><b>Tax Invoice</b></h1>
+            <h1 style="text-align:center; font-weight:bolder; text-transform:uppercase; margin-top:3px; margin-bottom:3px;"><b><?=$BillType?></b></h1>
         </td>
     </tr>
 
     <tr>
         <td style="float:right;"><p style="margin:2px; padding:2px;"><strong>INVOICE No. :</strong> <?=$InvoiceNo?></p>
-            <p style="margin:2px; padding:2px;"><strong>DATE OF ISSUE :</strong> <?=date("d-m-Y")?></p>
+            <p style="margin:2px; padding:2px;"><strong>DATE OF ISSUE :</strong> <?=$BillDate?></p>
             <p style="margin:2px; padding:2px;"><strong>GSTIN No. :</strong>07AABC173770R1ZX</p>
         </td>
 
@@ -64,6 +64,7 @@
                     <td style="border-top:1px solid; border-right:1px solid; text-align:center; height:20px;"><strong>UOM</strong></td>
                     <td style="border-top:1px solid; border-right:1px solid; text-align:center; height:20px;"><strong>QTY</strong></td>
                     <td style="border-top:1px solid; border-right:1px solid; text-align:center; height:20px;"><strong>Rate</strong></td>
+                    <td style="border-top:1px solid; border-right:1px solid; text-align:center; height:20px;"><strong>Transport Charge</strong></td>
                     <td style="border-top:1px solid; border-right:1px solid; text-align:center; height:20px;"><strong>Amount</strong></td>
                     <td style="border-top:1px solid; border-right:1px solid; text-align:center; height:20px;"><strong>Tax%</strong></td>
                     <td style="border-top:1px solid; border-right:1px solid; text-align:center; height:20px;"><strong>SGST Value</strong></td>
@@ -101,6 +102,9 @@
                         </td>
                         <td style="border-top:1px solid; border-right:1px solid; text-align:center; height:20px;">
                             <?=$ItemData[$i]["rate"]?>
+                        </td>
+                        <td style="border-top:1px solid; border-right:1px solid; text-align:center; height:20px;">
+                            <?=$ItemData[$i]["transport_charge"]?>
                         </td>
                         <td style="border-top:1px solid; border-right:1px solid; text-align:center; height:20px;">
                             <?=($ItemData[$i]["calculated_amount"]+$ItemData[$i]["transport_charge"])?>
@@ -213,14 +217,14 @@
     </tr>
     <?php
     $this->load->helper("markup");
-    $EndUserIp = numberTowords($totalamount);
+    $EndUserIp = numberTowords(round($totalamount));
     ?>
     <tr>
         <td style="border:1px solid #000000; padding:10px;">
             <table>
                 <tr>
-                    <td style="border:1px solid #000000; padding:10px; width:800px;"><strong><?=$EndUserIp?></strong></td>
-                    <td style="border:1px solid #000000; padding:10px; width:300px;">INR <strong>  <?=$totalamount?></strong></td>
+                    <td style="border:1px solid #000000; padding:10px; width:800px;"><strong><?=$EndUserIp?> only</strong></td>
+                    <td style="border:1px solid #000000; padding:10px; width:300px;">INR <strong>  <?=$totalamount?> /-</strong></td>
                 </tr>
             </table>
         </td>
@@ -273,6 +277,7 @@
 
 
 
+
     <tr>
         <td>
             <table>
@@ -283,6 +288,11 @@
                     </tr>
                 </td>
             </table>
+        </td>
+    </tr>
+    <tr>
+        <td width="1100">
+            Address
         </td>
     </tr>
 

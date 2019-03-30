@@ -41,14 +41,16 @@ class Bill extends MY_Controller {
         $PartyRes=array();
         $Partyid = $this->input->post('party');
         $Itemid = $this->input->post('itemid');
+        $BillType = $this->input->post('BillType');
+        $billDate = $this->input->post('billDate');
 
          $partyQry="select * from party where uuid='".$Partyid."'";
          $PartyRes=$this->CommonModel->ExecuteDirectQry($partyQry,1);
             $InvoiceNo="";
         $invoiceQry="select max(ainc) as maxno from invoice";
-        $InvRes=$this->CommonModel->ExecuteDirectQry($partyQry,1);
-        $prefix="DL/JHA/";
-        $data['InvoiceNo'] = $prefix.date("M")."/".date("Y")."/".(($InvRes["maxno"]="NULL")?"1":($InvRes["maxno"]+1));
+        $InvRes=$this->CommonModel->ExecuteDirectQry($invoiceQry,1);
+        $prefix=($BillType=="Tax Invoice")?"DL/JHA/":"DL/PJH/";
+        $data['InvoiceNo'] = $prefix.date("M",strtotime($billDate))."/".date("y",strtotime($billDate))."/".(($InvRes["maxno"]="NULL")?"1":($InvRes["maxno"]+1));
         for($i=0;$i<count($Itemid);$i++){
             $itemQry="select i.*,h.name as hsnCode,p.name as productName from item i
                         left outer join hsn h on i.hsn_id=h.uuid
@@ -67,11 +69,13 @@ class Bill extends MY_Controller {
 
         $data['PartyData'] = $PartyRes;
         $data['ItemData'] = $ItemRes;
+        $data['BillType'] = $BillType;
+        $data['BillDate'] = $billDate;
         $html .= $this->load->view('pages/printBill', $data, true);
         $pdf->WriteHTML($html);
         $output = 'upload/bill/' . date('Y_m_d_H_i_s') . '_.pdf';
-        $Qry[(count($Itemid))]="INSERT INTO `invoice`(`uuid`, `prefix`, `item_no`, `invoice_no`, `created_at`, `created_by`, `pdf_name`, `party_id`)
-                                  VALUES (uuid(),'" . $prefix . "','" .$InvoiceNo. "','" . $data['InvoiceNo'] . "',NOW(),'" . $this->session->userdata('uuid') . "','" . $output . "','" . $Partyid . "');";
+        $Qry[(count($Itemid))]="INSERT INTO `invoice`(`uuid`, `prefix`, `custom_genrated_date`, `bill_type`, `item_no`, `invoice_no`, `created_at`, `created_by`, `pdf_name`, `party_id`)
+                                  VALUES (uuid(),'" . $billDate . "','" .$BillType. "','" .$InvoiceNo. "','" .$InvoiceNo. "','" . $data['InvoiceNo'] . "',NOW(),'" . $this->session->userdata('uuid') . "','" . $output . "','" . $Partyid . "');";
         //print_r($Qry);exit;
         $this->CommonModel->createmultiquery($Qry);
         $pdf->Output("$output", 'F');

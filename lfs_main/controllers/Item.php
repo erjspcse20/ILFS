@@ -29,6 +29,8 @@ class Item extends MY_Controller {
         $GPNO = $this->input->post('GPNO');
         $StateOfSupply = $this->input->post('StateOfSupply');
         $PaymentMode = $this->input->post('PaymentMode');
+        $StateCode = $this->input->post('StateCode');
+        $CreatedAt = $this->input->post('CreatedAt');
         $ReceivedAmount = ($this->input->post('ReceivedAmount')=="")?0:$this->input->post('ReceivedAmount');
         $RestAmount = ($this->input->post('RestAmount')=="")?0:$this->input->post('RestAmount');
 
@@ -58,8 +60,8 @@ class Item extends MY_Controller {
         }
         if($Quantity!="" && $Rate!="" && $CalculatedAmount!="" && $TransportCharge!="" && $TaxCalculated!="" && $GstType!="" && $AmountWithTax!="")
         {
-            $InsQry = "INSERT INTO `item`(`uuid`,`item_published_id`, `party_id`, `product_id`, `hsn_id`, `created_at`, `created_by`, `type`, `quantity`, `rate`, `calculated_amount`, `category`, `transport_charge`, `total_gst`, `sgst`, `cgst`, `igst`, `gst_type`, `total_igst_calculated`, `total_sgst_calculated`, `total_cgst_calculated`, `amount_with_tax`, `dimension`, `vahical_no`, `gp_no`, `state_of_supply`, `mode_of_payment`, `recived_amount`, `rest_amount`)
-                    VALUES (uuid(),'" . $Sequence . "','" . $PartyId . "','" . $ProductId . "','" . $HsnId . "',NOW(),'" . $this->session->userdata('uuid') . "','" . $Type . "'," . $Quantity . "," . $Rate . "," . $CalculatedAmount . ",'" . $Category . "'," . $TransportCharge . "," . $TaxCalculated . "," . $Sgst . "," . $Cgst . "," . $Igst . "," . $GstType . "," . $IgstCalc . "," . $SgstCalc . "," . $CgstCalc . "," . $AmountWithTax . ",'" . $Dimension . "','" . $VehicleNo . "','" . $GPNO . "','" . $StateOfSupply . "','" . $PaymentMode . "'," . $ReceivedAmount . "," . $RestAmount . ");";
+            $InsQry = "INSERT INTO `item`(`uuid`,`item_published_id`, `party_id`, `product_id`, `hsn_id`, `created_at`, `created_by`, `type`, `quantity`, `rate`, `calculated_amount`, `category`, `transport_charge`, `total_gst`, `sgst`, `cgst`, `igst`, `gst_type`, `total_igst_calculated`, `total_sgst_calculated`, `total_cgst_calculated`, `amount_with_tax`, `dimension`, `vahical_no`, `gp_no`, `state_of_supply`, `mode_of_payment`, `recived_amount`, `rest_amount`, `state_code`, `custom_created_at`)
+                    VALUES (uuid(),'" . $Sequence . "','" . $PartyId . "','" . $ProductId . "','" . $HsnId . "',NOW(),'" . $this->session->userdata('uuid') . "','" . $Type . "'," . $Quantity . "," . $Rate . "," . $CalculatedAmount . ",'" . $Category . "'," . $TransportCharge . "," . $TaxCalculated . "," . $Sgst . "," . $Cgst . "," . $Igst . "," . $GstType . "," . $IgstCalc . "," . $SgstCalc . "," . $CgstCalc . "," . $AmountWithTax . ",'" . $Dimension . "','" . $VehicleNo . "','" . $GPNO . "','" . $StateOfSupply . "','" . $PaymentMode . "'," . $ReceivedAmount . "," . $RestAmount . ",'" . $StateCode . "'," . date("y-m-d H:i:s",strtotime($CreatedAt)) . ");";
             if($this->CommonModel->create($InsQry))
             {
                 $this->_flashMessage(1,"Save successfuly","error occure");//$ReceivedAmount$AmountWithTax$Quantity$Rate$CalculatedAmount$TransportCharge$RestAmount
@@ -76,7 +78,6 @@ class Item extends MY_Controller {
             $data["pageName"]='addItem';
             $this->load->view('Home',$data);
         }
-
     }
     public function ItemList()
     {
@@ -113,7 +114,6 @@ class Item extends MY_Controller {
     }
     public function EditItem($para=null)
     {
-
         if($para){
             $qry="select i.*,p.name as PartyName,p.email as PartyEmail,p.mobile as Partymobile,p.gst_no as Partygst,p.address as PartyAddress,p.gst_no as party_gst_no,h.name as HsnCode,pr.name as ProductName
                 from Item i
@@ -133,8 +133,6 @@ class Item extends MY_Controller {
             $data["pageName"]='addUser';
             $this->load->view('Home',$data);
         }
-
-
     }
     public function UpdateItem()
     {
@@ -157,6 +155,8 @@ class Item extends MY_Controller {
         $GPNO = $this->input->post('GPNO');
         $StateOfSupply = $this->input->post('StateOfSupply');
         $PaymentMode = $this->input->post('PaymentMode');
+        $StateCode = $this->input->post('StateCode');
+        $CreatedAt = $this->input->post('CreatedAt');
         $ReceivedAmount = ($this->input->post('ReceivedAmount')=="")?0:$this->input->post('ReceivedAmount');
         $RestAmount = ($this->input->post('RestAmount')=="")?0:$this->input->post('RestAmount');
 
@@ -177,7 +177,7 @@ class Item extends MY_Controller {
         }
         if(!empty($HsnId) && !empty($Itemid) && !empty($PartyId) && !empty($ProductId))
         {
-            $updateitemQry = "Update Item set party_id='" . $PartyId . "',hsn_id='" . $HsnId . "',quantity=" . $Quantity . ",category='" . $Category . "',transport_charge=" . $TransportCharge . ",total_cgst_calculated=" . $CgstCalc . ",total_sgst_calculated=" . $SgstCalc . ",total_igst_calculated=" . $IgstCalc . ",gst_type=" . $GstType . ",amount_with_tax=" . $AmountWithTax . ",dimension='" . $Dimension . "',vahical_no='" . $VehicleNo . "',gp_no='" . $GPNO . "',rest_amount=" . $RestAmount . ",recived_amount=" . $ReceivedAmount . ",mode_of_payment='" . $PaymentMode . "',state_of_supply='" . $StateOfSupply . "',igst=" . $Igst . ",sgst=" . $Sgst . ",cgst=" . $Cgst . ",total_gst=" . $TaxCalculated . ",rate=" . $Rate . ",calculated_amount=" . $CalculatedAmount . ",type='" . $Type . "',product_id='" . $ProductId . "',updated_at=now(),updated_by='" . $this->session->userdata('uuid') . "' where uuid='".$Itemid."';";//exit;
+            $updateitemQry = "Update Item set party_id='" . $PartyId . "', `state_code`='" . $StateCode . "', `custom_created_at`='" . date("Y-m-d",strtotime($CreatedAt)) . "',hsn_id='" . $HsnId . "',quantity=" . $Quantity . ",category='" . $Category . "',transport_charge=" . $TransportCharge . ",total_cgst_calculated=" . $CgstCalc . ",total_sgst_calculated=" . $SgstCalc . ",total_igst_calculated=" . $IgstCalc . ",gst_type=" . $GstType . ",amount_with_tax=" . $AmountWithTax . ",dimension='" . $Dimension . "',vahical_no='" . $VehicleNo . "',gp_no='" . $GPNO . "',rest_amount=" . $RestAmount . ",recived_amount=" . $ReceivedAmount . ",mode_of_payment='" . $PaymentMode . "',state_of_supply='" . $StateOfSupply . "',igst=" . $Igst . ",sgst=" . $Sgst . ",cgst=" . $Cgst . ",total_gst=" . $TaxCalculated . ",rate=" . $Rate . ",calculated_amount=" . $CalculatedAmount . ",type='" . $Type . "',product_id='" . $ProductId . "',updated_at=now(),updated_by='" . $this->session->userdata('uuid') . "' where uuid='".$Itemid."';";//exit;
             $upres=$this->CommonModel->create($updateitemQry);
             if($upres)
             {
@@ -186,12 +186,9 @@ class Item extends MY_Controller {
             }
             else
             {
-                //echo "error occure";
                 $this->_flashMessage(0,"Save successfuly","error occure");
                 return redirect('add-ilfs-item.jsp');
             }
-            //echo $this->db->last_query();exit;
-
         }
     }
     private function _flashMessage($successful, $successmsg, $failuremsg)

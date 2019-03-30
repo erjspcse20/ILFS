@@ -35,6 +35,9 @@
                                 <li><a href="<?= base_url('welcome-to-ilfs-invoice-list.jsp') ?>">Invoice List</a></li>
                             </ul>
                         </li>
+                        <?php
+                    }
+                    ?>
                         <li><a><i class="fa fa-edit"></i> Party <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="<?= base_url('add-ilfs-party.jsp') ?>">Add Party</a></li>
@@ -53,9 +56,7 @@
                                 <li><a href="<?= base_url('welcome-to-ilfs-product-list.jsp') ?>">Product List</a></li>
                             </ul>
                         </li>
-                        <?php
-                    }
-                    ?>
+
                     <li><a><i class="fa fa-bar-chart-o"></i> Item <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="<?=base_url('add-ilfs-item.jsp')?>">Add Item</a></li>

@@ -87,6 +87,7 @@
                             <th class="width50"> RATE </th>
                             <th class="width50"> AMOUNT  </th>
                             <th class="width150"> Transport Charge</th>
+                            <th class="width100">State Code </th>
                             <th class="width50">Amount</th>
                             <th class="width50"> SGST% </th>
                             <th class="width50">SGST</th>
@@ -107,7 +108,7 @@
                         <?php
                         for($i=0;$i<count($ItemData);$i++) {
                             ?>
-                            <tr>
+                            <tr class="<?=($ItemData[$i]["bill_status"]==1)?"success":""?>">
                                 <td class="width25"><?=($i+1);?></td>
                                 <td class="width100"><?=$ItemData[$i]["item_published_id"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["recived_amount"];?></td>
@@ -122,6 +123,7 @@
                                 <td class="width50"><?=$ItemData[$i]["rate"];?></td>
                                 <td class="width50"><?=($ItemData[$i]["quantity"]*$ItemData[$i]["rate"]);?></td>
                                 <td class="width150"><?=$ItemData[$i]["transport_charge"];?></td>
+                                <td class="width150"><?=$ItemData[$i]["state_code"];?></td>
                                 <td class="width50"><?=(($ItemData[$i]["quantity"]*$ItemData[$i]["rate"])+$ItemData[$i]["transport_charge"]);?></td>
                                 <td class="width50"><?=$ItemData[$i]["sgst"];?></td>
                                 <td class="width50"><?=$ItemData[$i]["total_sgst_calculated"];?></td>
@@ -135,7 +137,7 @@
                                 <td class="width100"><?=$ItemData[$i]["vahical_no"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["gp_no"];?></td>
                                 <td class="width100"><?=$ItemData[$i]["full_name"];?></td>
-                                <td class="width25"><a href="<?=base_url('welcome-to-ilfs-edit-item.jsp/'.$ItemData[$i]["uuid"])?>" style="font-size:20px;" name="ed"><i class="fa fa-pencil-square-o fa-fw"></i></i></a></td>
+                                <td class="width25"><?php if($ItemData[$i]["bill_status"]==2 or $this->session->userdata('type')==0){?><a href="<?=base_url('welcome-to-ilfs-edit-item.jsp/'.$ItemData[$i]["uuid"])?>" style="font-size:20px;" name="ed"><i class="fa fa-pencil-square-o fa-fw"></i></i></a><?php }?></td>
                             </tr>
                             <?php
                         }
