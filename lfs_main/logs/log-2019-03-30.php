@@ -1275,3 +1275,446 @@ DEBUG - 2019-03-30 07:36:40 --> Global POST, GET and COOKIE data sanitized
 DEBUG - 2019-03-30 07:36:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
 DEBUG - 2019-03-30 12:06:40 --> mPDF class is loaded.
 ERROR - 2019-03-30 12:06:41 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at G:\software\web\il-fs\lfs_main\third_party\mpdf\mpdf.php:7740) G:\software\web\il-fs\lfs_predefined\helpers\url_helper.php 564
+DEBUG - 2019-03-30 11:52:37 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:52:37 --> No URI present. Default controller set.
+DEBUG - 2019-03-30 11:52:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:52:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:22:37 --> Total execution time: 0.4584
+DEBUG - 2019-03-30 11:52:45 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:52:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:52:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:52:45 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:52:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:52:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:22:45 --> Total execution time: 0.0458
+DEBUG - 2019-03-30 11:52:53 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:52:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:52:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:52:53 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:52:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:52:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:22:53 --> Total execution time: 0.1282
+DEBUG - 2019-03-30 11:52:53 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:52:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:52:53 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:22:53 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:22:53 --> Total execution time: 0.0966
+DEBUG - 2019-03-30 11:52:53 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:52:53 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:52:54 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:22:54 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:22:54 --> Total execution time: 0.0726
+DEBUG - 2019-03-30 11:52:58 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:52:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:52:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:22:58 --> Total execution time: 0.2939
+DEBUG - 2019-03-30 11:52:58 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:52:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:52:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:52:58 --> UTF-8 Support Enabled
+ERROR - 2019-03-30 16:22:58 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 11:52:58 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 16:22:58 --> Total execution time: 0.0694
+DEBUG - 2019-03-30 11:52:58 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:22:58 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:22:58 --> Total execution time: 0.0609
+DEBUG - 2019-03-30 11:52:59 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:52:59 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:52:59 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:22:59 --> Total execution time: 0.0690
+DEBUG - 2019-03-30 11:53:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:53:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:53:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:23:04 --> Total execution time: 0.0882
+DEBUG - 2019-03-30 11:53:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:53:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:53:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:53:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:53:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:53:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:23:04 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:23:04 --> Total execution time: 0.0762
+ERROR - 2019-03-30 16:23:04 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:23:04 --> Total execution time: 0.0955
+DEBUG - 2019-03-30 11:53:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:53:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:53:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:53:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:53:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:53:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:23:04 --> Total execution time: 0.0603
+DEBUG - 2019-03-30 11:53:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:53:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 16:23:04 --> Total execution time: 0.0851
+DEBUG - 2019-03-30 11:53:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:53:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:53:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:53:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:23:04 --> Total execution time: 0.0746
+DEBUG - 2019-03-30 16:23:04 --> Total execution time: 0.0853
+DEBUG - 2019-03-30 11:55:57 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:55:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:25:57 --> Total execution time: 0.0500
+DEBUG - 2019-03-30 11:55:57 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:55:57 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:55:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:55:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:25:57 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:25:57 --> Total execution time: 0.0656
+ERROR - 2019-03-30 16:25:57 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:25:57 --> Total execution time: 0.0807
+DEBUG - 2019-03-30 11:55:57 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:55:57 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:55:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:55:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:25:57 --> Total execution time: 0.0636
+DEBUG - 2019-03-30 11:55:57 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:55:57 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 16:25:57 --> Total execution time: 0.0770
+DEBUG - 2019-03-30 11:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:55:57 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:55:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:55:57 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:25:57 --> Total execution time: 0.0623
+DEBUG - 2019-03-30 16:25:57 --> Total execution time: 0.0743
+DEBUG - 2019-03-30 11:56:44 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:56:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:56:44 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:26:44 --> Total execution time: 0.0633
+DEBUG - 2019-03-30 11:56:44 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:56:44 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:56:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:56:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:56:44 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:56:44 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:26:44 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:26:44 --> Total execution time: 0.0621
+ERROR - 2019-03-30 16:26:44 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:26:44 --> Total execution time: 0.0779
+DEBUG - 2019-03-30 11:56:44 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:56:44 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:56:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:56:44 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:56:44 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:56:44 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:26:44 --> Total execution time: 0.0539
+DEBUG - 2019-03-30 11:56:44 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 16:26:44 --> Total execution time: 0.0750
+DEBUG - 2019-03-30 11:56:44 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:56:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:56:45 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:56:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:56:45 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:26:45 --> Total execution time: 0.0639
+DEBUG - 2019-03-30 16:26:45 --> Total execution time: 0.0749
+DEBUG - 2019-03-30 11:57:02 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:57:02 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:27:02 --> Total execution time: 0.0678
+DEBUG - 2019-03-30 11:57:02 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:02 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:27:02 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 11:57:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:27:02 --> Total execution time: 0.0620
+DEBUG - 2019-03-30 11:57:02 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:02 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:57:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:57:05 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:05 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:05 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:57:29 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:57:29 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:27:29 --> Total execution time: 0.0622
+DEBUG - 2019-03-30 11:57:30 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:57:30 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:30 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:30 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:27:30 --> Total execution time: 0.0567
+DEBUG - 2019-03-30 11:57:34 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:57:34 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:27:34 --> Total execution time: 0.0466
+DEBUG - 2019-03-30 11:57:34 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:34 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:27:34 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 11:57:34 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 16:27:34 --> Total execution time: 0.0801
+DEBUG - 2019-03-30 11:57:34 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:27:34 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:27:34 --> Total execution time: 0.0765
+DEBUG - 2019-03-30 11:57:36 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:27:36 --> Total execution time: 0.0612
+DEBUG - 2019-03-30 11:57:36 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:36 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:36 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:57:36 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:27:36 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:27:36 --> Total execution time: 0.0731
+ERROR - 2019-03-30 16:27:36 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:27:36 --> Total execution time: 0.0971
+DEBUG - 2019-03-30 11:57:37 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:57:37 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:57:37 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:27:37 --> Total execution time: 0.0737
+DEBUG - 2019-03-30 11:58:03 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:58:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:58:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:28:03 --> Total execution time: 0.1034
+DEBUG - 2019-03-30 11:58:03 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:58:03 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:58:03 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:58:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 11:58:03 --> Global POST, GET and COOKIE data sanitized
+ERROR - 2019-03-30 16:28:03 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:28:03 --> Total execution time: 0.0909
+DEBUG - 2019-03-30 11:58:03 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:28:04 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:28:04 --> Total execution time: 0.1042
+DEBUG - 2019-03-30 11:58:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:58:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:58:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:28:04 --> Total execution time: 0.0581
+DEBUG - 2019-03-30 11:58:08 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:58:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:58:08 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:28:08 --> Total execution time: 0.0556
+DEBUG - 2019-03-30 11:58:08 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:58:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:58:08 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:58:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:58:08 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:28:08 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 11:58:08 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:28:08 --> Total execution time: 0.0754
+ERROR - 2019-03-30 16:28:08 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:28:08 --> Total execution time: 0.0802
+DEBUG - 2019-03-30 11:58:08 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:58:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:58:08 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:28:08 --> Total execution time: 0.0586
+DEBUG - 2019-03-30 11:58:21 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 11:58:21 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 11:58:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:28:22 --> mPDF class is loaded.
+ERROR - 2019-03-30 16:28:23 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at G:\software\web\il-fs\lfs_main\third_party\mpdf\mpdf.php:7740) G:\software\web\il-fs\lfs_predefined\helpers\url_helper.php 564
+DEBUG - 2019-03-30 12:04:07 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:04:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:04:07 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:34:07 --> Total execution time: 0.0755
+DEBUG - 2019-03-30 12:04:07 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:04:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:04:07 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:04:07 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:04:07 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:34:07 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:34:07 --> Total execution time: 0.0628
+DEBUG - 2019-03-30 12:04:07 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:34:07 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:34:07 --> Total execution time: 0.0693
+DEBUG - 2019-03-30 12:04:08 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:04:08 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:04:08 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:34:08 --> Total execution time: 0.0581
+DEBUG - 2019-03-30 12:04:51 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:04:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:04:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:34:51 --> Total execution time: 0.0880
+DEBUG - 2019-03-30 12:04:51 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:04:51 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:04:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:04:51 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:04:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 12:04:51 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:34:51 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:34:51 --> Total execution time: 0.0934
+ERROR - 2019-03-30 16:34:51 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:34:51 --> Total execution time: 0.1201
+DEBUG - 2019-03-30 12:04:52 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:04:52 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:04:52 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:34:52 --> Total execution time: 0.0629
+DEBUG - 2019-03-30 12:05:02 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:05:02 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:05:02 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:35:02 --> mPDF class is loaded.
+ERROR - 2019-03-30 16:35:03 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at G:\software\web\il-fs\lfs_main\third_party\mpdf\mpdf.php:7740) G:\software\web\il-fs\lfs_predefined\helpers\url_helper.php 564
+DEBUG - 2019-03-30 12:05:32 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:05:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:05:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:35:32 --> Total execution time: 0.0654
+DEBUG - 2019-03-30 12:05:32 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:05:32 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:05:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:05:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:05:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 12:05:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:35:32 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:35:32 --> Total execution time: 0.0747
+ERROR - 2019-03-30 16:35:32 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:35:32 --> Total execution time: 0.1039
+DEBUG - 2019-03-30 12:05:32 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:05:32 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:05:32 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:35:32 --> Total execution time: 0.0614
+DEBUG - 2019-03-30 12:05:40 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:05:40 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:05:40 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:35:40 --> mPDF class is loaded.
+ERROR - 2019-03-30 16:35:40 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at G:\software\web\il-fs\lfs_main\third_party\mpdf\mpdf.php:7740) G:\software\web\il-fs\lfs_predefined\helpers\url_helper.php 564
+DEBUG - 2019-03-30 12:06:33 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:06:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:06:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:36:33 --> Total execution time: 0.0566
+DEBUG - 2019-03-30 12:06:33 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:06:33 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:06:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:06:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:06:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 12:06:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:36:33 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:36:33 --> Total execution time: 0.0865
+ERROR - 2019-03-30 16:36:33 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:36:33 --> Total execution time: 0.1108
+DEBUG - 2019-03-30 12:06:33 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:06:33 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:06:33 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:36:33 --> Total execution time: 0.0666
+DEBUG - 2019-03-30 12:06:35 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:06:35 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:06:35 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:36:36 --> mPDF class is loaded.
+ERROR - 2019-03-30 16:36:36 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at G:\software\web\il-fs\lfs_main\third_party\mpdf\mpdf.php:7740) G:\software\web\il-fs\lfs_predefined\helpers\url_helper.php 564
+DEBUG - 2019-03-30 12:07:17 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:37:17 --> Total execution time: 0.0619
+DEBUG - 2019-03-30 12:07:17 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:17 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 12:07:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:37:17 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:37:17 --> Total execution time: 0.0710
+ERROR - 2019-03-30 16:37:17 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:37:17 --> Total execution time: 0.0922
+DEBUG - 2019-03-30 12:07:17 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:17 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:17 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:37:17 --> Total execution time: 0.0654
+DEBUG - 2019-03-30 12:07:19 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:37:19 --> Total execution time: 0.0534
+DEBUG - 2019-03-30 12:07:19 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:19 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 12:07:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:37:19 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:37:19 --> Total execution time: 0.0610
+ERROR - 2019-03-30 16:37:19 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:37:19 --> Total execution time: 0.0924
+DEBUG - 2019-03-30 12:07:19 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:19 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:19 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:37:19 --> Total execution time: 0.0571
+DEBUG - 2019-03-30 12:07:22 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:37:22 --> Total execution time: 0.0519
+DEBUG - 2019-03-30 12:07:22 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:22 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 12:07:22 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:37:22 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:37:22 --> Total execution time: 0.0711
+ERROR - 2019-03-30 16:37:22 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:37:22 --> Total execution time: 0.0909
+DEBUG - 2019-03-30 12:07:22 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:22 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:23 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:37:23 --> Total execution time: 0.0580
+DEBUG - 2019-03-30 12:07:25 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:25 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:37:25 --> Total execution time: 0.0531
+DEBUG - 2019-03-30 12:07:25 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:25 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:25 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:25 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:37:25 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 12:07:25 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:37:25 --> Total execution time: 0.0738
+ERROR - 2019-03-30 16:37:25 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:37:25 --> Total execution time: 0.0859
+DEBUG - 2019-03-30 12:07:25 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:26 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:26 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:37:26 --> Total execution time: 0.0673
+DEBUG - 2019-03-30 12:07:29 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:07:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:07:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:37:29 --> mPDF class is loaded.
+ERROR - 2019-03-30 16:37:30 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at G:\software\web\il-fs\lfs_main\third_party\mpdf\mpdf.php:7740) G:\software\web\il-fs\lfs_predefined\helpers\url_helper.php 564
+DEBUG - 2019-03-30 12:09:01 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:09:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:09:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:39:01 --> Total execution time: 0.0935
+DEBUG - 2019-03-30 12:09:01 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:09:01 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:09:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:09:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:09:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 12:09:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+ERROR - 2019-03-30 16:39:01 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:39:01 --> Total execution time: 0.0836
+ERROR - 2019-03-30 16:39:01 --> Severity: Notice --> Undefined variable: ItemData G:\software\web\il-fs\lfs_view\pages\404.php 41
+DEBUG - 2019-03-30 16:39:01 --> Total execution time: 0.1008
+DEBUG - 2019-03-30 12:09:01 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:09:01 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:09:01 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:39:01 --> Total execution time: 0.0680
+DEBUG - 2019-03-30 12:09:04 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:09:04 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:09:04 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:39:04 --> mPDF class is loaded.
+ERROR - 2019-03-30 16:39:05 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at G:\software\web\il-fs\lfs_main\third_party\mpdf\mpdf.php:7740) G:\software\web\il-fs\lfs_predefined\helpers\url_helper.php 564
+DEBUG - 2019-03-30 12:09:29 --> UTF-8 Support Enabled
+DEBUG - 2019-03-30 12:09:29 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2019-03-30 12:09:29 --> Session: "sess_save_path" is empty; using "session.save_path" value from php.ini.
+DEBUG - 2019-03-30 16:39:29 --> mPDF class is loaded.
+ERROR - 2019-03-30 16:39:29 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at G:\software\web\il-fs\lfs_main\third_party\mpdf\mpdf.php:7740) G:\software\web\il-fs\lfs_predefined\helpers\url_helper.php 564
